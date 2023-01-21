@@ -12,6 +12,8 @@
     "shorttasks:install": "yarn sti",
     "install:shorttasks": "yarn sti",
     "remove:shorttasks": "yarn str",
-    "shorttasks:remove": "yarn str"
+    "shorttasks:remove": "yarn str",
+    "install": "echo 'ST install' && yarn sti ",
+    "postinstall": "echo 'ST postinstall' && yarn sti "
   }
 }
