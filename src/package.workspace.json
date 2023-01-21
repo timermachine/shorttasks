@@ -1,0 +1,22 @@
+{
+  "name": "uicomponents",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "author": "henry kemp",
+  "workspaces": [
+    "./*"
+  ],
+  "scripts": {
+    "uicomponents:start": "yarn workspace @peers/uicomponents start",
+    "uicomponents:cy": "yarn workspace @peers/uicomponents test:dev",
+    "uicomponents:storybook": "yarn workspace @peers/uicomponents storybook",
+    "uicomponents:dev": "concurrently --kill-others-on-fail 'yarn uicomponents:start'  'yarn uicomponents:cy' 'yarn uicomponents:storybook' ",
+    "webapp:dev": "concurrently  --kill-others-on-fail 'yarn workspace @peers/webapp start' 'yarn workspace @peers/webapp test' "
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "loop": "^3.3.6"
+  }
+}
