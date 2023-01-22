@@ -12,7 +12,7 @@ then
     #if first param given, and it is a directory
     returndir=$PWD
    # (npm --cwd $1 && npm $2 $3 $4 && npm --cwd $returndir)
-   (cd "$1" && npm run "$2 $3 $4 $5 $6 $7 $8 $9" && cd "$returndir" || exit)
+   (cd "$1" && npm run "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" && cd "$returndir" || exit)
 else
     #just run npm in current dir
     npm "$@"
