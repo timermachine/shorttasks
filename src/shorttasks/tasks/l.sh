@@ -28,8 +28,6 @@ fi
 
 source "$HOME/.shorttasks/lib/rules.sh"
 
- 
-
 for dir in ./*     # list directories in the form "/tmp/dirname/"
 do
     if [ -d "$dir" ]; then
