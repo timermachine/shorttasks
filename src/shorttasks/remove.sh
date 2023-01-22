@@ -2,7 +2,7 @@
 
 echo 
 echo
-cat ./tasks/ascii.txt
+# cat ./tasks/ascii.txt
 echo
 
 
