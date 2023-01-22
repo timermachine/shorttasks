@@ -6,6 +6,7 @@ cat ./tasks/ascii.txt
 echo
 
 dest="$HOME/.shorttasks"
+alias_source="source $dest/aliases.sh "
 mkdir "$dest"
 # echo "mkdir $dest"
 
@@ -24,17 +25,31 @@ echo "This will install to $HOME/.shorttasks"
             chmod a+x "$dest/${f##*/}" 
         fi 
     done
-    # "$dest/st.sh"
-    # "source $dest/aliases.sh"  
-     [[ -e "$HOME/.zshrc" ]] &&  echo "source $dest/aliases.sh "  >>  ~/.zshrc # && "source $HOME/.zshrc"
-     [[ -e "$HOME/.bashrc" ]] &&  echo "source $dest/aliases.sh "  >>  ~/.bashrc #&& "source $HOME/.bashrc"
-   
+  
+  #  [[ -e "$HOME/.bashrc" ]] &&
+
+    z_has_alias_source=$( grep "$alias_source" "$HOME/.zshrc" )
+  
+    if [ "$z_has_alias_source" ]; then 
+    echo 'zshrc already sources alias. skipping.'
+    else
+      echo " $alias_source"  >>  "$HOME/.zshrc"
+    fi
+
+     b_has_alias_source=$( grep "$alias_source" "$HOME/.bashrc" )
+
+    if [ "$b_has_alias_source" ]; then 
+      echo '.bashrc already sources alias. skipping.'
+    else
+        echo "$alias_source"  >>  "$HOME/.bashrc"
+    fi
+
     echo
     echo 'Installation complete.'
-    echo 'ONE MANUAL STEP, and all done:'
-    echo 'source ~/.zshrc'
+    echo 'ONE MANUAL STEP, and all done: Do:'
+    echo 'source $HOME/.zshrc'
     echo 'or '
-    echo 'source ~/.bashrc'
+    echo 'source $HOME/.bashrc'
     echo 'then type st (shorttasks!) for guidance.'
 
       ;;

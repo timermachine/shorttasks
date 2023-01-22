@@ -15,6 +15,7 @@ echo ' gs   : git status '
 echo ' n    : npm run '
 echo ' pn   : pnpm run '
 echo ' y    : yarn '
+echo ' l    : l {any above command} (executes for each immediate folder)'
 echo 
 echo 'For all commands: call without params gives specific command help.'
 echo
