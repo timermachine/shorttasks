@@ -8,8 +8,16 @@ echo
 dest="$HOME/.shorttasks"
 alias_source="source $dest/aliases.sh "
 mkdir "$dest"
+mkdir "$dest/lib"
+# cp "./tasks/lib/*" "$dest/lib"
 # echo "mkdir $dest"
-
+ for f in ./tasks/lib/*; do
+	    if [[ -e "$f" ]]; then 
+            # echo "$f $dest${f##*/}" 
+            cp "$f" "$dest/lib/${f##*/}" 
+            chmod a+x "$dest/lib/${f##*/}" 
+        fi 
+done
 
 echo 'shorttask installation.'
 echo "This will install to $HOME/.shorttasks"

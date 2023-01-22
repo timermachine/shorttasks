@@ -12,6 +12,10 @@
     "install:shorttasks": "yarn sti",
     "remove:shorttasks": "yarn str",
     "shorttasks:remove": "yarn str",
-    "postinstall": "yarn sti"
+    "bats-core": "git submodule add https://github.com/bats-core/bats-core.git tests/libs/bats-core",
+    "bats-file": "git submodule add  https://github.com/bats-core/bats-file.git tests/libs/bats-file",
+    "bats-assert": "git submodule add https://github.com/bats-core/bats-assert.git  tests/libs/bats-assert",
+    "dev:install": "yarn bats-file && yarn bats-assert",
+    "test": "bats tests/*"
   }
 }

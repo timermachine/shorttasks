@@ -19,7 +19,7 @@ echo ' l    : l {any above command} (executes for each immediate folder)'
 echo 
 echo 'For all commands: call without params gives specific command help.'
 echo
-echo 'For all commands: first param optional relative directory to execute command in.'
+echo 'For all commands ( except l ): first param optional relative directory to execute command in.'
 echo 'Which is great for Mono/Poly/Multi repos'
 echo 'for example:'
 echo '$> gc "commit message"             - executes in current folder.'
