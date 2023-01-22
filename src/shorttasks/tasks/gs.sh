@@ -9,7 +9,7 @@ else
     then
         #if first param given, and it is a directory
           echo "gs for dir: $1" && 
-          git -C "$1" status "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
+          git -C $1 status $2 $3 $4 $5 $6 $7 $8 $9
     else
     git status "$@" 
     fi

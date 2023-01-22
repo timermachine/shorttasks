@@ -11,7 +11,7 @@ then
     #if first param given, and it is a directory
     returndir=$PWD
    # (yarn --cwd $1 && yarn $2 $3 $4 && yarn --cwd $returndir)
-   (cd "$1" && yarn "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" && cd "$returndir" || exit)
+   (cd "$1" && yarn $2 $3 $4 $5 $6 $7 $8 $9 && cd "$returndir" || exit)
 else
     #just run yarn in current dir
     yarn "$@"

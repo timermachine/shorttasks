@@ -14,7 +14,7 @@ else
     if [ -d "$1" ]
     then
            git -C add . &&
-          git -C "$1" commit  -a --amend --no-edit
+          git -C $1 commit  -a --amend --no-edit
     git status "$@" 
     fi
 fi

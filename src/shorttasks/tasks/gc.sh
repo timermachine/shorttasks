@@ -10,7 +10,7 @@ echo "gc path 'message' [generates: git commit -C path -m 'message']" && exit
 if [ -d "$1" ]
 then
     #if first param given, and it is a directory
-    git -C "$1" commit -m "$2"
+    git -C $1 commit -m "$2"
 else
     #just run git status in current dir
     git commit -m "$1"
