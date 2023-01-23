@@ -1,23 +1,19 @@
 #!/bin/bash
-clear
-echo ''
+
+echo 
+echo
 cat ./shorttasks/lib/ascii.txt
-echo ''
+echo
 
 dest="$HOME/.shorttasks"
 alias_source="source $dest/aliases.sh "
 
 # cp "./tasks/lib/*" "$dest/lib"
 # echo "mkdir $dest"
-echo ''
+
 echo 'Welcome to the ShortTasks installation.'
 echo "Installs to $HOME/.shorttasks."
-echo ''
-echo "You should look at the code to check its safe."
-echo 'Easy minute to check -only 400 simple lines. put it in all in one file:'
-echo '$ find src/ -name '*.sh' -exec cat {} \; > allcode.sh'
-echo ''
- read -r -p 'Do you want to continue installation?(y/n) ' choice
+ read -r -p 'Do you want to continue? ' choice
     case "$choice" in
       n|N) echo 'quitting' && exit;;
       y|Y) 
@@ -72,7 +68,7 @@ echo ''
     z_has_alias_source=$( grep "$alias_source" "$HOME/.zshrc" )
   
     if [ "$z_has_alias_source" ]; then 
-    echo '' # 'zshrc already sources alias. skipping.'
+    echo 'zshrc already sources alias. skipping.'
     else
       echo " $alias_source"  >>  "$HOME/.zshrc"
     fi
@@ -80,7 +76,7 @@ echo ''
      b_has_alias_source=$( grep "$alias_source" "$HOME/.bashrc" )
 
     if [ "$b_has_alias_source" ]; then 
-      echo '' # '.bashrc already sources alias. skipping.'
+      echo '.bashrc already sources alias. skipping.'
     else
         echo "$alias_source"  >>  "$HOME/.bashrc"
     fi
@@ -88,11 +84,28 @@ echo ''
     echo
     echo 'Installation complete.'
     echo 'ONE MANUAL STEP, and all done: Do:'
-    echo '$ source $HOME/.zshrc or source $HOME/.bashrc'
-    echo 'then type st (shorttasks!) to check install worked and for guidance.'
+    echo 'source $HOME/.zshrc'
+    echo 'or '
+    echo 'source $HOME/.bashrc'
+    echo 'then type st (shorttasks!) for guidance.'
 
       ;;
       *) echo 'Response not valid';;
     esac
 
+
+#!/bin/bash
+echo 
+echo
+cat ./shorttasks/ascii.txt
+echo
+echo "This will REMOVE shorttasks from: $HOME/.shorttasks"
+ read -r -p 'Do you want to continue? ' choice
+    case "$choice" in
+      n|N) echo 'quitting' && exit;;
+      y|Y) rm -rf ~/.shorttasks/ &&
+      echo 'you should probably remove the line source ~./shorttasks/aliases.sh from ~/.bashrc and or ~/.zshrc manually as well.' &&
+       exit ;;
+      *) echo 'Response not valid';;
+    esac
 

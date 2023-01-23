@@ -4,36 +4,16 @@ staging post for project direction. (think quick dirty proj wiki -just a file!)
 
 roadmap:
 
-Romeo. 5 √
-GU GD - finally sane git push and git pulls!
+afto:
 
-Victor. 30
-auto update aliases.sh √
-aside:
-src/
-install, remove
-shorttasks/
-better as shorttasks matches dest ~/.shorttasks. √
-
-bonus:
-requires source .shell? - if so prompt if changed.
-
-Oscar. 5
-demo script - actions to tty null.
-eg: touch dummy files for git tasks.
-
-Yankee. 30 @see Qebeck
-h: gh - why? for now its just so can use it with l. eg. l h.
-most powerful for seeing gh activity across all repos. pull requests, issues, activity.
-
-Quebec. 90
-use GH in demo -
-cloning shorttasks,
-starting up demo repos.
-remove them when done :)
+make a poly repo just for recording.-fewer repos, no files top level,
+playground for screencasts (gh different dummy repos so can push/pull)
 
 Alpha. 300
-Get readme good enough to share.
+Get readme good enough to share:
+a good script.
+try highlighting while doing demo!
+
 st - image.
 install vid.
 usage vid.
@@ -41,6 +21,12 @@ draft-edit-redraft-reedit-start-from-scratch!
 add template for contrib guide, etc.
 
 ---
+
+Quebec. 90
+use GH in demo -
+cloning shorttasks,
+starting up demo repos.
+remove them when done :)
 
 Unicorn. 30
 on install pre-check if aliases already taken.
@@ -58,6 +44,10 @@ lack of auto completion at cmd line for anything other than files/folder names r
 when i type
 cmd space tab, it should drop down list the options.
 
+Victor2. 30
+bonus:
+requires source .shell? - if so prompt if changed.
+
 X. 120
 brew package it.
 consider moving from bash scripts to go.
@@ -74,3 +64,18 @@ https://github.com/protocool/ack-tmbundle/blob/master/Support/ack-standalone.sh
 #!/usr/bin/env perl
 
 - have a look at env node / others, understand langs usable.
+
+---done::::
+
+Oscar. 5 √ normal behaviour.
+demo script - actions to tty null.
+eg: touch dummy files for git tasks.
+
+vscode record - fucking great!+giphy - winner!
+st - more prompt(too much for screen record (and users!)) [*]
+
+Yankee. 30 @see Qebeck
+h: gh - why? for now its just so can use it with l. eg. l h.
+most powerful for seeing gh activity across all repos. pull requests, issues, activity.
+
+--parking lot::::
