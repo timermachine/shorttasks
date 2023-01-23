@@ -1,5 +1,6 @@
 #!/bin/bash
-echo 'n ( npm run ) shortcut script ~/.shorttasks/n.sh' 
+# can run with no params - so hush this out:
+# echo 'n ( npm run ) shortcut script ~/.shorttasks/n.sh' 
 
 [ $# -eq 0 ] && echo "n (npm run) shortcut script ~/.shorttasks/n.sh) error: No params." && 
 echo  'first param optionally relative directory to run npm in.' && 

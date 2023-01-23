@@ -6,12 +6,11 @@ roadmap:
 
 afto:
 
-tidy up repo's git. √
-make a poly repo just for recording.-fewer repos, no files top level,- just copy a couple.√
-playground for screencasts (gh different dummy repos so can push/pull) \***\*
-video scripts! ..... \*\***
-install
-usage
+call it a day.
+fix these for install and str:
+mkdir: /Users/henry/.shorttasks: File exists
+mkdir: /Users/henry/.shorttasks/lib: File exists
+cp: ./shorttasks/lib is a directory (not copied).
 
 Alpha.
 Tune up readme good enough to share:
@@ -24,6 +23,11 @@ add template for contrib guide, etc.
 ---
 
 ---
+
+Kilo.
+cool - type in demo - adds pesonality. more likely read than readme.md!
+bonus - make demos accessible. - alt tag the text typed in. /could i provide
+the demo script to be run accessibly?
 
 Mike.
 DRY code.
@@ -86,5 +90,15 @@ st - more prompt(too much for screen record (and users!)) [*]
 Yankee. 30 @see Qebeck
 h: gh - why? for now its just so can use it with l. eg. l h.
 most powerful for seeing gh activity across all repos. pull requests, issues, activity.
+
+tidy up repo's git. √
+make a poly repo just for recording.-fewer repos, no files top level,- just copy a couple.√
+playground for screencasts (gh different dummy repos so can push/pull)
+humanised typing!!! - record typing speed per letter. apply style! quick react app :)
+https://github.com/dan-silver/typewriter-for-vscode
+
+video scripts! ..... \*\*\*\*
+install
+usage
 
 --parking lot::::

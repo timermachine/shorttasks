@@ -1,5 +1,7 @@
 #!/bin/bash
-echo 'pn ( pnpm ) shortcut script ~/.shorttasks/pnpm.sh' 
+
+# can run with no params - so hush this out:
+# echo 'pn ( pnpm ) shortcut script ~/.shorttasks/pnpm.sh' 
 
 [ $# -eq 0 ] && echo 'pn (pnpm run) shortcut script ~/.shorttasks/pn.sh) error: No params.' && 
 echo  'first param optionally relative directory to run pnpm in.' && 
