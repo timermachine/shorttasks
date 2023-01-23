@@ -5,9 +5,12 @@ staging post for project direction. (think quick dirty proj wiki -just a file!)
 roadmap:
 
 afto:
-
-make a poly repo just for recording.-fewer repos, no files top level,
+[ 3
+tidy up repo's git. ****
+make a poly repo just for recording.-fewer repos, no files top level,- just copy a couple.
 playground for screencasts (gh different dummy repos so can push/pull)
+]
+video scripts!
 
 Alpha. 300
 Get readme good enough to share:
@@ -21,6 +24,14 @@ draft-edit-redraft-reedit-start-from-scratch!
 add template for contrib guide, etc.
 
 ---
+
+---
+
+Mike.
+DRY code.
+libs/helper - for st actions.(currently repeated)
+
+Lima.
 
 Quebec. 90
 use GH in demo -
