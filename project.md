@@ -5,18 +5,16 @@ staging post for project direction. (think quick dirty proj wiki -just a file!)
 roadmap:
 
 afto:
-[ 3
-tidy up repo's git. ****
-make a poly repo just for recording.-fewer repos, no files top level,- just copy a couple.
-playground for screencasts (gh different dummy repos so can push/pull)
-]
-video scripts!
 
-Alpha. 300
-Get readme good enough to share:
-a good script.
-try highlighting while doing demo!
+tidy up repo's git. √
+make a poly repo just for recording.-fewer repos, no files top level,- just copy a couple.√
+playground for screencasts (gh different dummy repos so can push/pull) \***\*
+video scripts! ..... \*\***
+install
+usage
 
+Alpha.
+Tune up readme good enough to share:
 st - image.
 install vid.
 usage vid.
