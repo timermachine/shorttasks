@@ -34,9 +34,8 @@ yarn str # (short tasks remove)
 
 ShortTasks are made for you by the above install are:
 
-| ShortTask | executes   | example                    |
-| --------- | ---------- | -------------------------- |
-| y         | yarn       | y app start                |
+| ShortTask | executes   | example                    | Compared to | key hit saving |
+| --------- | ---------- | -------------------------- | ----------- | -------------- |
 | g         | git        | g app branch -l            |
 | gs        | git status | gs site                    |
 | ga        | git add    | ga uicomponents            |
@@ -45,6 +44,21 @@ ShortTasks are made for you by the above install are:
 | gpl       | git pull   | gpl web                    |
 | n         | npm run    | n app                      |
 | pn        | pnpm run   | pn app                     |
+| y         | yarn       | y app start                |
+
+st : this shortasks help.
+g : git
+ga : git add
+gc : git commit -m ""
+gca : git commit -a --amend --no-edit
+gco : git checkout -b
+gpl : git pull
+gps : git push
+gs : git status
+n : npm run
+pn : pnpm run
+y : yarn
+l : l {any above command} (executes for each immediate folder)
 
 all shortcuts are simple aliased shell scripts. ready for you to
 customise however you like:

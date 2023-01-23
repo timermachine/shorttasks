@@ -2,30 +2,36 @@
 
 echo 
 echo
-cat ./tasks/ascii.txt
+# cat ./tasks/ascii.txt
+source ./tasks/lib/banner.sh
 echo
 
 dest="$HOME/.shorttasks"
 alias_source="source $dest/aliases.sh "
-mkdir "$dest"
-mkdir "$dest/lib"
+
 # cp "./tasks/lib/*" "$dest/lib"
 # echo "mkdir $dest"
- for f in ./tasks/lib/*; do
-	    if [[ -e "$f" ]]; then 
-            # echo "$f $dest${f##*/}" 
-            cp "$f" "$dest/lib/${f##*/}" 
-            chmod a+x "$dest/lib/${f##*/}" 
-        fi 
-done
 
-echo 'shorttask installation.'
-echo "This will install to $HOME/.shorttasks"
+echo 'Welcome to the ShortTasks installation.'
+echo "Installs to $HOME/.shorttasks."
  read -r -p 'Do you want to continue? ' choice
     case "$choice" in
       n|N) echo 'quitting' && exit;;
       y|Y) 
       clear
+      
+      mkdir "$dest"
+      mkdir "$dest/lib"
+      
+      for f in ./tasks/lib/*; do
+            if [[ -e "$f" ]]; then 
+                  # echo "$f $dest${f##*/}" 
+                  cp "$f" "$dest/lib/${f##*/}" 
+                  chmod a+x "$dest/lib/${f##*/}" 
+              fi 
+      done
+
+
       for f in ./tasks/*; do
 	    if [[ -e "$f" ]]; then 
             # echo "$f $dest${f##*/}" 

@@ -1,21 +1,24 @@
 #!/bin/bash
-echo 
-echo
-cat "$HOME/.shorttasks/ascii.txt"
-echo
-echo ' st   : this shortasks help.'
-echo ' g    : git '
-echo ' ga   : git add '
-echo ' gc   : git commit -m "" '
-echo ' gca  : git commit  -a --amend --no-edit '
-echo ' gco  : git checkout -b '
-echo ' gpl  : git pull '
-echo ' gpsh : git push '
-echo ' gs   : git status '
-echo ' n    : npm run '
-echo ' pn   : pnpm run '
-echo ' y    : yarn '
-echo ' l    : l {any above command} (executes for each immediate folder)'
+echo ''
+echo ''
+# cat "$HOME/.shorttasks/ascii.txt"
+ source "$HOME/.shorttasks/lib/banner.sh"
+echo ''
+echo '   short  :      instead of                     '
+echo '----------------------------------------------'
+echo '     g     :     git '
+echo '     ga    :     git add '
+echo '     gc    :     git commit -m "" '
+echo '     gca   :     git commit  -a --amend --no-edit '
+echo '     gco   :     git checkout -b '
+echo '     gpl   :     git pull '
+echo '     gps   :     git push '
+echo '     gs    :     git status '
+echo '     n     :     npm run '
+echo '     pn    :     pnpm run '
+echo '     y     :     yarn '
+echo '     l     :     l {any above command} (executes for each immediate folder)'
+echo '     st    :     your shortasks help (this)'
 echo 
 echo 'For all commands: call without params gives specific command help.'
 echo
