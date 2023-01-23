@@ -1,7 +1,7 @@
 #!/bin/bash
 echo 
 echo
-cat ./tasks/ascii.txt
+cat ./shorttasks/ascii.txt
 echo
 echo "This will REMOVE shorttasks from: $HOME/.shorttasks"
  read -r -p 'Do you want to continue? ' choice

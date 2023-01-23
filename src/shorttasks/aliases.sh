@@ -1,3 +1,4 @@
+
 alias g=$HOME/.shorttasks/g.sh
 alias ga=$HOME/.shorttasks/ga.sh
 alias gc=$HOME/.shorttasks/gc.sh
@@ -11,6 +12,6 @@ alias pn=$HOME/.shorttasks/pn.sh
 alias pull=$HOME/.shorttasks/pull.sh
 alias push=$HOME/.shorttasks/push.sh
 alias scratch=$HOME/.shorttasks/scratch.sh
+alias sillytest=$HOME/.shorttasks/sillytest.sh
 alias st=$HOME/.shorttasks/st.sh
-alias temp.txt=$HOME/.shorttasks/temp.txt
 alias y=$HOME/.shorttasks/y.sh

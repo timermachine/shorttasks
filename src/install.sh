@@ -2,7 +2,7 @@
 
 echo 
 echo
-cat ./tasks/lib/ascii.txt
+cat ./shorttasks/lib/ascii.txt
 echo
 
 dest="$HOME/.shorttasks"
@@ -22,21 +22,26 @@ echo "Installs to $HOME/.shorttasks."
       mkdir "$dest"
       mkdir "$dest/lib"
 
-  # update aliases.sh based on all scripts in tasks/
-  # exclude alaises its self!
-   touch ./newalias.sh
-      for f in ./tasks/*; do
-            if [[ -e "$f" ]]; then 
-               a=${f/.\/tasks\//''}
-               b=${a/'.sh'/''}
-               
-               line="alias $b"'=$HOME/.shorttasks/'"$a"
-              [ $b != 'aliases' ] && echo $line >> ./newalias.sh
-              fi 
-      done
-exit
+  
+  # ensure file exists and empty
+  alias_file='./shorttasks/aliases.sh'
+  touch $alias_file
+  echo ''> $alias_file
+      
+  # update aliases.sh based on all scripts in src/shorttasks/
+  for f in ./shorttasks/*; do
+        if [[ -e "$f" ]]; then 
+            a=${f/.\/shorttasks\//''}
+            b=${a/'.sh'/''}
+            
+            line="alias $b"'=$HOME/.shorttasks/'"$a"
+          # exclude alaises its self as in shorttasks folder.
+          [ $b != 'aliases' ] && echo $line >> $alias_file
+          fi 
+  done
+
     # copy tasks/* to ~/.shorttasks/
-    for f in ./tasks/*; do
+    for f in ./shorttasks/*; do
 	    if [[ -e "$f" ]]; then 
             # echo "$f $dest${f##*/}" 
             cp "$f" "$dest/${f##*/}" 
@@ -45,7 +50,7 @@ exit
     done
 
       # copy tasks/lib/* to ~/.shorttasks/
-      for f in ./tasks/lib/*; do
+      for f in ./shorttasks/lib/*; do
             if [[ -e "$f" ]]; then 
                   # echo "$f $dest${f##*/}" 
                   cp "$f" "$dest/lib/${f##*/}" 

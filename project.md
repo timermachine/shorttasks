@@ -13,7 +13,7 @@ aside:
 src/
 install, remove
 shorttasks/
-better as shorttasks matches dest ~/.shorttasks.
+better as shorttasks matches dest ~/.shorttasks. √
 
 bonus:
 requires source .shell? - if so prompt if changed.
