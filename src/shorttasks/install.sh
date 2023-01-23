@@ -2,8 +2,7 @@
 
 echo 
 echo
-# cat ./tasks/ascii.txt
-source ./tasks/lib/banner.sh
+cat ./tasks/lib/ascii.txt
 echo
 
 dest="$HOME/.shorttasks"
@@ -22,7 +21,30 @@ echo "Installs to $HOME/.shorttasks."
       
       mkdir "$dest"
       mkdir "$dest/lib"
-      
+
+  # update aliases.sh based on all scripts in tasks/
+  # exclude alaises its self!
+   touch ./newalias.sh
+      for f in ./tasks/*; do
+            if [[ -e "$f" ]]; then 
+               a=${f/.\/tasks\//''}
+               b=${a/'.sh'/''}
+               
+               line="alias $b"'=$HOME/.shorttasks/'"$a"
+              [ $b != 'aliases' ] && echo $line >> ./newalias.sh
+              fi 
+      done
+exit
+    # copy tasks/* to ~/.shorttasks/
+    for f in ./tasks/*; do
+	    if [[ -e "$f" ]]; then 
+            # echo "$f $dest${f##*/}" 
+            cp "$f" "$dest/${f##*/}" 
+            chmod a+x "$dest/${f##*/}" 
+        fi 
+    done
+
+      # copy tasks/lib/* to ~/.shorttasks/
       for f in ./tasks/lib/*; do
             if [[ -e "$f" ]]; then 
                   # echo "$f $dest${f##*/}" 
@@ -31,14 +53,10 @@ echo "Installs to $HOME/.shorttasks."
               fi 
       done
 
+    
 
-      for f in ./tasks/*; do
-	    if [[ -e "$f" ]]; then 
-            # echo "$f $dest${f##*/}" 
-            cp "$f" "$dest/${f##*/}" 
-            chmod a+x "$dest/${f##*/}" 
-        fi 
-    done
+
+
   
   #  [[ -e "$HOME/.bashrc" ]] &&
 

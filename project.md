@@ -4,16 +4,17 @@ staging post for project direction. (think quick dirty proj wiki -just a file!)
 
 roadmap:
 
-Tango. 5
-Drop superflous /shorttasks/ (peer remenant)
-/src/shorttasks/tasks
-/src/tasks
-
-Romeo. 5
+Romeo. 5 √
 GU GD - finally sane git push and git pulls!
 
 Victor. 30
-auto update aliases.sh
+auto update aliases.sh √
+aside:
+src/
+install, remove
+shorttasks/
+better as shorttasks matches dest ~/.shorttasks.
+
 bonus:
 requires source .shell? - if so prompt if changed.
 

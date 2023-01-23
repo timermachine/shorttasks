@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "gpl (git pull) shorttask. (~/.shorttasks/gpl.sh)"
+echo "pull (git pull) shorttask. (~/.shorttasks/pull.sh)"
 
 if [ -d "$1" ]
 then

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "gps (git push) shorttask. (~/.shorttasks/gps.sh)"
+echo "push (git push) shorttask. (~/.shorttasks/push.sh)"
 
 if [ -d "$1" ]
 then
