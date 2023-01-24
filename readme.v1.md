@@ -1,25 +1,5 @@
 # ShortTasks
 
-Configure commands with super powers.
-Designed for mono/multi/poly repos.
-Never have to type cd.. again.
-Faster context/multi-project switching.
-
-Designed for maximum flow and ease of use.
-Opinionated: by default these types of actions run across multipe directories.
-This is how we want to work - with multiple repository folders.
-Going more specific is allowed: just add /. if you want to action task on
-a single target.
-eg:
-gs packages -executes for all child dirs of packages.
-gs packages/webapp/. -executes only for webapp
-gs ./. - executes only for current directory. (yes we & you want to get away from this as it means navigation in and out of folders!)
-ga shorttasks.app/. .
-
-99% of the time you want to do git actions on at least one entire repo.
--or a repo that is initialised for git.
-so by setting a applicable we can negate the need to add /.
-
 ShortTasks allow you to avoid changing directory, type a lot less and so stay in the flow for 99% of git and yarn/npm/pnpm tasks.
 
 Simple easily customisable toolbelt especially useful for

@@ -1,5 +1,4 @@
 
-alias allcode=$HOME/.shorttasks/allcode.sh
 alias g=$HOME/.shorttasks/g.sh
 alias ga=$HOME/.shorttasks/ga.sh
 alias gc=$HOME/.shorttasks/gc.sh
@@ -15,4 +14,5 @@ alias pull=$HOME/.shorttasks/pull.sh
 alias push=$HOME/.shorttasks/push.sh
 alias scratch=$HOME/.shorttasks/scratch.sh
 alias st=$HOME/.shorttasks/st.sh
+alias xl=$HOME/.shorttasks/xl.sh
 alias y=$HOME/.shorttasks/y.sh

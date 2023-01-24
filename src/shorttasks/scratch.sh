@@ -20,4 +20,10 @@ function howtohash() {
     echo hashmap has ${#hashmap[@]} elements
 }
 
-echo "0- $0"
+
+
+#  [ -d "$2" ]|| [ -f "$2" ] &&  
+    # [ "$2" != '.' ] 
+
+applicable=''
+
