@@ -80,3 +80,19 @@ p1substitite "$@"
 
 
 echo "$@"
+
+# got somwhere trying to overwrite line for demo:
+#  printf "\e[<N>A\e[Here                              ." # \e[1A\e[ \e[<N>A
+
+# @see https://www.ubuntupit.com/simple-yet-effective-linux-shell-script-examples/
+
+: '
+******************************************
+    Look ma - multi line comments :)
+    This script calculates
+    the square of 5.
+******************************************
+'
+
+((area=5*5))
+echo $area
