@@ -1,13 +1,14 @@
 #!/bin/bash
+ source "$HOME/.shorttasks/lib/actions.sh"
+ source "$HOME/.shorttasks/lib/colors.sh"
 
-echo "pull (git pull) shorttask. (~/.shorttasks/pull.sh)"
+st="pull"
+cmd="git pull"
+applicable=".git"
 
-if [ -d "$1" ]
-then
-    #if first param given, and it is a directory
-    echo "gpl: git pull for $1"
-    git -C $1 pull $2 $3 $4 $5 $6 $7 $8 $9
-else
-    #just run git status in current dir
-    git pull "$@"
-fi
+[ "$1" = '-h' ] && 
+echo "pull ( $cmd ) shortcut script ~/.shorttasks/n.sh" &&
+echo 'first param optional: relative directory to run git operation on.' && 
+exit
+
+action "$@"

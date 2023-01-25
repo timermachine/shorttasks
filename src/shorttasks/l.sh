@@ -1,10 +1,16 @@
 #!/bin/bash
- source "$HOME/.shorttasks/lib/actions.sh"
+source "$HOME/.shorttasks/lib/actions.sh"
+source "$HOME/.shorttasks/lib/colors.sh"
 
- cmd="ls -1 --color"
+st="l"
+cmd="ls -1 --color"
+applicable="package.json"
+# inapplicable="node_modules etc todo"
  
-[ "$1" = '-h' ]  && 
-echo 'l (ls short and colorful! (ls -1 --color) shortcut script ~/.shorttasks/l.sh)' &&
-exit
+if [ "$1" = '-h' ]; then 
+    echo 'l (ls short and colorful! (ls -1 --color) shortcut script ~/.shorttasks/l.sh)' &&
+     echo 'warning: filtered only to dirs that have $applicable'
+    exit
+fi
 
 action "$@"
