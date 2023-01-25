@@ -18,9 +18,31 @@ applicable=".git"
 # might want a confirm. as git add . is an exception to the rule.
 
 
-[ "$1" = '-h' ] && 
-echo "ga ( $cmd)" && 
-echo "shortcut script ~/.shorttasks/gco.sh" &&
-echo "ga ./ . "
-exit
+if [ "$1" = '-h' ]; then 
+    echo "ga ( $cmd)" && 
+    echo "shortcut script ~/.shorttasks/gco.sh" &&
+    echo "ga ./ . "
+    exit
+fi
 action "$@"
+
+
+#  p1substitite() { 
+#     [ "$1" != '.' ] && return
+#     echo 'processing...'
+#     arguments=()
+
+#     arguments+=("ZORRO")
+#       index=1
+
+#       for arg in "$@"; do
+#         if [ $index -gt 1 ]; then 
+#         arguments+=("$arg")
+#        fi
+#        index=$((index+1))
+#       done
+
+#     echo "${arguments[@]}"
+#     set -- "${arguments[@]}"
+#     arguments=()
+# }

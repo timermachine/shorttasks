@@ -8,10 +8,11 @@ echo '   short  :      instead of                     '
 echo '----------------------------------------------'
 echo '     g     :     git '
 echo '     ga    :     git add '
+echo '     gb    :     git branch '
 echo "     gc '' :     git commit -m '' "
 echo '     gca   :     git commit  -a --amend --no-edit '
 echo '     gco   :     git checkout -b '
-echo '     gs    :     git status '
+echo '     gs    :     git status -s'
 echo '     h     :     gh (github-cli)  '
 echo '     pull  :     git pull '
 echo '     push  :     git push '
@@ -24,5 +25,6 @@ echo
  read -p "more..." </dev/tty
 
 echo '$ gc "commit message"           - runs in every first level dir that is git enabled.'
-echo '$ gc webapp/. "commit message"  - runs in webapp folder.'  
+echo '$ gc webapp "commit message"    - runs in webapp folder (as long as it is git enabled'  
 echo '$ gc . "commit message"         - runs in current folder.'
+echo '$ gs                            - git status -s for every first level dir having package.json '
