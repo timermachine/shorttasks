@@ -18,8 +18,8 @@ function singleaction() {
 function multiaction() {
 
     printf "${IYel}"
-    printf "$cmd  ( %s-*dirs ) " "$1"
-     [ "$applicable" != 'any' ]  && printf "having %s" "$applicable"
+    printf "$cmd  ( %s*dirs ) " "$1"
+     [ "$applicable" != 'any' ]  && printf " having %s" "$applicable"
     printf "${Whi}"
      echo ''
   

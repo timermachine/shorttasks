@@ -1,13 +1,11 @@
 #!/bin/bash
 
-echo "push (git push) shorttask. (~/.shorttasks/push.sh)"
+cmd="git push"
+applicable=".git"
 
-if [ -d "$1" ]
-then
-    #if first param given, and it is a directory
-    echo "git push for $1"
-    git -C $1 push $2 $3 $4 $5 $6 $7 $8 $9
-else
-    #just run git  in current dir
-    git push "$@"
-fi
+[ "$1" = '-h' ] && 
+echo "push ( $cmd ) shortcut script ~/.shorttasks/n.sh" &&
+echo 'first param optional: relative directory to run git operation on.' && 
+exit
+
+action "$@"

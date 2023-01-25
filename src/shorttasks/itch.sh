@@ -25,5 +25,6 @@ function howtohash() {
 #  [ -d "$2" ]|| [ -f "$2" ] &&  
     # [ "$2" != '.' ] 
 
-applicable=''
+# [ $# -eq 1 ] && echo '1'
+[ $# -eq 0 ] && echo 'none'
 
