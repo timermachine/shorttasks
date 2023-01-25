@@ -1,5 +1,8 @@
 #!/bin/bash
+ source "$HOME/.shorttasks/lib/actions.sh"
+ source "$HOME/.shorttasks/lib/colors.sh"
 
+st="pull"
 cmd="git pull"
 applicable=".git"
 

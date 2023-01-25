@@ -11,7 +11,8 @@ function singleaction() {
     # todo: dry run: show what it would do, and ask confirm if any params are -dr
     #  echo " cd $1 && $cmd $2 $3 $4 $5 $6 $7 $8 $9 "
     [ -e "$returndir" ] && cd "$1" || exit
-    $cmd $2 $3 $4 $5 $6 $7 $8 $9 
+    echo "$cmd $2 $3 $4 $5 $6 $7 $8 $9 "
+    $cmd "$2" $3 $4 $5 $6 $7 $8 $9 
     [ -e "$returndir" ] && cd "$returndir" || exit
 }
 

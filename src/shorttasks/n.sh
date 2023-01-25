@@ -1,4 +1,8 @@
 #!/bin/bash
+source "$HOME/.shorttasks/lib/actions.sh"
+source "$HOME/.shorttasks/lib/colors.sh"
+
+st="n"
 cmd="npm run"
 applicable="package.json"
 

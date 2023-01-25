@@ -3,7 +3,7 @@ source "$HOME/.shorttasks/lib/actions.sh"
 
 st="ga"
 cmd="git add"
- applicable=".git"
+applicable=".git"
 
 
 # might want a warning /dry run here.

@@ -16,9 +16,6 @@ if [ "$1" = '-h' ]; then
     echo "eg: $st start myapp/.   -only in myapp (as long as has $applicable)"  
     echo  "using $st script at: ~/.shorttasks/$st.sh) -edit in your fork and y shorttasks/. update"
     exit
-
-    
-
 fi
  
 action "$@"
