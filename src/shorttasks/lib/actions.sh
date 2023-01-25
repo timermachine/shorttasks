@@ -1,6 +1,6 @@
 #!/bin/bash
 source "$HOME/.shorttasks/lib/colors.sh"
-
+st=''
 cmd=''
 applicable='any'
 mode=1  # 1: *dirs (/. to specify single) 2: single given dir.
@@ -19,7 +19,7 @@ function singleaction() {
 function multiaction() {
 
     printf "${IYel}"
-    printf "$cmd  ( %s*dirs ) " "$1"
+    printf "$st: $cmd  ( %s*dirs ) " "$1"
      [ "$applicable" != 'any' ]  && printf " having %s" "$applicable"
     printf "${Whi}"
      echo ''
@@ -29,6 +29,7 @@ function multiaction() {
         if [ -d "$dir" ]; then
             if [ "$applicable" = 'any' ] || [ -e "$dir/$applicable" ]; then
                 printf "${IYel}"
+                echo ''
                 echo "$dir:"
                 printf "${Whi}" 
                 singleaction $dir $2 $3 $4 $5 $6 $7 $8 $9
@@ -36,6 +37,7 @@ function multiaction() {
             fi      
         fi
     done
+     echo ''
 }
 # entry point.
 # determines singe/multi action.
@@ -62,7 +64,7 @@ function action(){
     # [[ $1 =~ /\. ]] && echo 'slash dot at end: /.' 
     if [[ $1 =~ /\. ]] || [ "$1" = '-' ] || [ "$1" = '.' ]; then
       printf "${IYel}"
-      echo "$cmd  $1 "
+      echo "$st: $cmd  $1 "
       printf "${Whi}" 
          singleaction "$@"
     else
