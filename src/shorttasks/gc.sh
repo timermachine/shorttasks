@@ -12,28 +12,6 @@ applicatble=".git"
 # [ "$1" = '.' ] && set  -- " ./ ."
 # "commit message" getting broken up. leading to :
 # error: pathspec '123' did not match any file(s) known to git
-arguments=()
-message=()
-echo "P1: $1"
-echo "P2: $2"
-
-if [ -d "$1" ]; then
-    arguments+=("$1")
-    startindex=1
-else
-    arguments+=("./.")
-    message+=("$1")
-    startindex=0
-fi
-    index=0
-    for arg in "$@"; do
-    if [ $index -gt $startindex ]; then 
-    message+=("$arg")
-    fi
-    index=$((index+1))
-    done
-echo "${arguments[@]}" "${message[@]}"
-#  set -- "${arguments[@]}" "\'" "${message[@]}" "\'"
 
 if [ "$1" = '-h' ]; then 
     printf "${IYel}"
@@ -48,4 +26,28 @@ if [ "$1" = '-h' ]; then
     exit
 fi
 
-action "$@"
+# if [ -d "$1" ]; then
+#     arguments+=("$1")
+#     startindex=1
+# else
+#     arguments+=(".")
+#     message+=("$1")
+#     startindex=0
+# fi
+#     index=0
+#     for arg in "$@"; do
+#     if [ $index -gt $startindex ]; then 
+#         message+=("$arg")
+#     fi
+#         index=$((index+1))
+#     done
+#     echo "${arguments[@]}" "${message[@]}"
+#   set -- "${arguments[@]}" "\'" "${message[@]}" "\'"
+
+
+if [ -d "$1" ]; then
+    action "$@"
+else
+    echo "gc takes dir 'message' "
+    echo "dir children first checked for .git, if none found runs in dir."
+fi

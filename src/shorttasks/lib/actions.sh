@@ -1,6 +1,8 @@
 #!/bin/bash
-cd "$(dirname "$0")"
-source ./colors.sh
+
+# cd "$(dirname "$0")"
+# source ./colors.sh
+source "$HOME/.shorttasks/lib/colors.sh"
 st=''
 cmd=''
 applicable='any'
@@ -16,7 +18,7 @@ function singleaction() {
     # if [ "$dir" != "$inapplicable" ]; then 
 
         [ -e "$returndir" ] && cd "$1" || exit
-         echo "single: $cmd . $2 . $3 . $4 . $5 . $6 $7 $8 $9 "
+        # echo "$cmd $2 $3 $4 $5 $6 $7 $8 $9 "
         $cmd "$2" $3 $4 $5 $6 $7 $8 $9 
         [ -e "$returndir" ] && cd "$returndir" || exit
     # fi

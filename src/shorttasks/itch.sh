@@ -96,3 +96,30 @@ echo "$@"
 
 ((area=5*5))
 echo $area
+
+
+fubar () {
+    arguments=()
+message=()
+echo "P1: $1"
+echo "P2: $2"
+
+if [ -d "$1" ]; then
+    arguments+=("$1")
+    startindex=1
+else
+    arguments+=("./.")
+    message+=("$1")
+    startindex=0
+fi
+    index=0
+    for arg in "$@"; do
+    if [ $index -gt $startindex ]; then 
+    message+=("$arg")
+    fi
+    index=$((index+1))
+    done
+echo "${arguments[@]}" "${message[@]}"
+#  set -- "${arguments[@]}" "\'" "${message[@]}" "\'"
+
+}
