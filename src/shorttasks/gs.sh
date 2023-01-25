@@ -6,6 +6,8 @@
  cmd="git status -s"
  applicable=".git"
  
+# todo: substite -l for --long  grr - nice to have.
+
 if [ "$1" = '-h' ]; then 
     printf "${IYel}"
     echo "$st ($cmd) filters: $applicable must be present in dirs." 
