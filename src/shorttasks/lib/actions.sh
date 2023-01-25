@@ -3,6 +3,7 @@ source "$HOME/.shorttasks/lib/colors.sh"
 
 cmd=''
 applicable='any'
+mode=1  # 1: *dirs (/. to specify single) 2: single given dir.
 
 function singleaction() {
      returndir=$PWD
@@ -36,22 +37,32 @@ function multiaction() {
         fi
     done
 }
-
+# entry point.
+# determines singe/multi action.
 function action(){
-    # echo "setaction $*"
-   
+    # echo "action $*"
+
+    # mode 1: *dirs  2: single given dir.
+    if [ $mode = 2 ]; then
+      singleaction "$@" && return
+    fi
+
     # prevent globbing patters
-    [ -d "$2" ]|| [ -f "$2" ] &&  
-    [ "$2" != '.' ] && # special case for git add which needs a path specified.
-    echo '2nd param was a file or directory. globbing (/* /**) patterns not supported.' &&
-    echo 'paramters recieved:' && 
-    echo "$@" && 
-    return;
+   if [ -d "$2" ]|| [ -f "$2" ] &&  [ "$2" != '.' ]; then 
+        # special case for git add which needs a path specified.
+        printf "2nd param was a file or directory. \n"
+        printf "${Red}" 
+        printf "globbing (/* /**) patterns not currently supported.\n" 
+        printf "${Whi}"  
+        echo 'paramters recieved: '  
+        echo "$@"  
+        return;
+    fi
 
     # [[ $1 =~ /\. ]] && echo 'slash dot at end: /.' 
     if [[ $1 =~ /\. ]] || [ "$1" = '-' ] || [ "$1" = '.' ]; then
       printf "${IYel}"
-      echo "$cmd for $1"
+      echo "$cmd  $1 "
       printf "${Whi}" 
          singleaction "$@"
     else
@@ -64,5 +75,29 @@ function action(){
              multiaction "." "$@"
         fi
     fi
-    
+}
+
+
+
+# helper functions:
+
+# this works. would prob would pass arguments on, echo "$@" doesnt show changed args.
+function p1substitite() { 
+    [ "$1" != '.' ] && return
+    echo 'processing...'
+    arguments=()
+
+    arguments+=("ZORRO")
+      index=1
+
+      for arg in "$@"; do
+        if [ $index -gt 1 ]; then 
+        arguments+=("$arg")
+       fi
+       index=$((index+1))
+      done
+
+    echo "${arguments[@]}"
+    set -- "${arguments[@]}"
+    arguments=()
 }
