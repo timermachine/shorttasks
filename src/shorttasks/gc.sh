@@ -8,7 +8,7 @@
 
 st="gc"
 cmd="git commit -m "
-applicatble=".git"
+applicable=".git"
 
 # 
 # [ "$1" = '.' ] && set  -- " ./ ."
@@ -21,9 +21,12 @@ if [ "$1" = '-h' ]; then
     printf "${Whi}" 
     # echo "eg: $st branch .    # git branch on currrent dir only. " 
     #  echo "eg: $st branch myapp/. -only myapp. " 
-    echo "NOTE: does git add . first - as typically do this before commit."
-    echo "eg: $st 'message'    -no location param - all first level dirs having a $applicable"  
-    echo "eg: $st 'message' myapp/.   -only in myapp (as long as has $applicable)"  
+    echo "gc - git commit can be hard to undo if you do it on the wrong multiple repos so"
+    echo "you must specify a directory as first paramater."
+    echo "as with other commands if you want to run it only in the current directory use: dot"
+    echo "gc . 'message'"
+    echo "if you want to applied to all children of current directory use  dot slash :"
+    echo "gc ./ 'message'"
     echo  "using $st script at: ~/.shorttasks/$st.sh) -edit in your fork and y shorttasks/. update"
     exit
 fi

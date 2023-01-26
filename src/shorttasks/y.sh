@@ -13,7 +13,10 @@ if [ "$1" = '-h' ]; then
     # echo "eg: $st branch .    # git branch on currrent dir only. " 
     #  echo "eg: $st branch myapp/. -only myapp. " 
     echo "eg: $st start    -no location param - all first level dirs having a $applicable"  
-    echo "eg: $st start myapp/.   -only in myapp (as long as has $applicable)"  
+   
+    echo "eg: $st ../myapp update  -this is fine, can ../ navigate."  
+    echo "eg: $st . start  -explicitly in the current directory only. "
+    echo "eg: $st myapp/. start   -only in myapp (as long as has $applicable)"  
     echo  "using $st script at: ~/.shorttasks/$st.sh) -edit in your fork and y shorttasks/. update"
     exit
 fi
