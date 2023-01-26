@@ -3,7 +3,7 @@ source "$HOME/.shorttasks/lib/actions.sh"
 source "$HOME/.shorttasks/lib/colors.sh"
 
 st="h"
-cmd="gh"
+cmd="gh "
 applicable=".git" 
 # for most like pr create : want allowable .git
 #  maybe a preferable? to avoid slash dotting.

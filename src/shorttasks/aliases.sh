@@ -15,6 +15,7 @@ alias n=$HOME/.shorttasks/n.sh
 alias pn=$HOME/.shorttasks/pn.sh
 alias pull=$HOME/.shorttasks/pull.sh
 alias push=$HOME/.shorttasks/push.sh
+alias pushnew=$HOME/.shorttasks/pushnew.sh
 alias st=$HOME/.shorttasks/st.sh
 alias xl=$HOME/.shorttasks/xl.sh
 alias y=$HOME/.shorttasks/y.sh

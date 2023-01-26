@@ -6,9 +6,10 @@ st="push"
 cmd="git push"
 applicable=".git"
 
-[ "$1" = '-h' ] && 
-echo "push ( $cmd ) shortcut script ~/.shorttasks/n.sh" &&
-echo 'first param optional: relative directory to run git operation on.' && 
-exit
+if [ "$1" = '-h' ]; then 
+    echo "push ( $cmd ) shortcut script ~/.shorttasks/n.sh" &&
+    echo 'first param optional: relative directory to run git operation on.' && 
+    exit
+fi
 
 action "$@"

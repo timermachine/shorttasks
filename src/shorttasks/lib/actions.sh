@@ -20,9 +20,13 @@ function singleaction() {
         [ -e "$returndir" ] && cd "$1" || exit
         #  echo "single: $cmd $2 $3 $4 $5 $6 $7 $8 $9" 
         if [ "$st" = 'gc' ]; then 
-            $cmd "\"$2\"" $3 $4 $5 $6 $7 $8 $9 
+            $cmd "\"$2\"" "\"$3\"" "\"$4\"" $5 $6 $7 $8 $9 
         else
-            $cmd $2 $3 $4 $5 $6 $7 $8 $9 
+             if [ "$st" = 'XXXh' ]; then 
+            $cmd "$2" "$3" "\"$4\"" "\"$5\"" $6 $7 $8 $9 
+            else
+                $cmd $2 $3 $4 $5 $6 $7 $8 $9 
+            fi
         fi
         [ -e "$returndir" ] && cd "$returndir" || exit
     # fi
@@ -53,7 +57,7 @@ function multiaction() {
                     echo ''
                     echo "$dir:"
                     printf "${Whi}" 
-                    singleaction $dir "$2" $3 $4 $5 $6 $7 $8 $9
+                    singleaction $dir "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
                     allowedcount+=1
                 fi
             # else - todo: verbose mode: say skipped as not an applicable git dir etc.
@@ -70,7 +74,7 @@ function multiaction() {
         echo ''
         echo "$dir:"
         printf "${Whi}" 
-        singleaction $1 "$2" $3 $4 $5 $6 $7 $8 $9
+        singleaction $1 "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
         allowedcount+=1
       fi
      
@@ -126,22 +130,22 @@ function action(){
 # helper functions:
 
 # this works. would prob would pass arguments on, echo "$@" doesnt show changed args.
-function p1substitite() { 
-    [ "$1" != '.' ] && return
-    echo 'processing...'
-    arguments=()
+# function p1substitite() { 
+#     [ "$1" != '.' ] && return
+#     echo 'processing...'
+#     arguments=()
 
-    arguments+=("ZORRO")
-      index=1
+#     arguments+=("ZORRO")
+#       index=1
 
-      for arg in "$@"; do
-        if [ $index -gt 1 ]; then 
-        arguments+=("$arg")
-       fi
-       index=$((index+1))
-      done
+#       for arg in "$@"; do
+#         if [ $index -gt 1 ]; then 
+#         arguments+=("$arg")
+#        fi
+#        index=$((index+1))
+#       done
 
-    echo "${arguments[@]}"
-    set -- "${arguments[@]}"
-    arguments=()
-}
+#     echo "${arguments[@]}"
+#     set -- "${arguments[@]}"
+#     arguments=()
+# }
