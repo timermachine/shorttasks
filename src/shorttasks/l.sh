@@ -4,7 +4,7 @@ source "$HOME/.shorttasks/lib/colors.sh"
 
 st="l"
 cmd="ls -1 --color"
-applicable="package.json"
+# applicable="any"
 # inapplicable="node_modules etc todo"
  
 if [ "$1" = '-h' ]; then 

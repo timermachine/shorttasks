@@ -13,7 +13,7 @@ echo "     gc      :   git commit -m '' "
 echo '     gca     :   git commit  -a --amend --no-edit '
 echo '     gco     :   git checkout'
 echo '     gcob    :   git checkout -b '
-echo '     gs      :   git status -s'
+echo '     gs      :   git status -s -b'
 echo '     h       :   gh (github-cli)  '
 echo '     pull    :   git pull '
 echo '     push    :   git push '

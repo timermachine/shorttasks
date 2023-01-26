@@ -64,9 +64,21 @@ function multiaction() {
     # if none of the children were allowable run for parent dir. 
     #  So dont have to g targetdir/. - g targetdir will work.
      if [ "$allowedcount" = 0 ];then
-      singleaction $1 "$2" $3 $4 $5 $6 $7 $8 $9
-      allowedcount=0
+
+        if [ "$applicable" = 'any' ] || [ -e "$1/$applicable" ]; then  
+        printf "${IYel}"
+        echo ''
+        echo "$dir:"
+        printf "${Whi}" 
+        singleaction $1 "$2" $3 $4 $5 $6 $7 $8 $9
+        allowedcount+=1
+      fi
+     
     fi 
+     if [ "$allowedcount" = 0 ];then
+        echo "NOOP. No child or current dir with $applicable"
+     fi
+     allowedcount=0
      echo ''
 }
 # entry point.
