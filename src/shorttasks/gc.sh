@@ -52,7 +52,6 @@ fi
 
 # action "$@"
 
-echo "p1: $1"
 if [ -d "$1" ]; then
     action "$@"
 else

@@ -17,12 +17,9 @@ echo "You should look at the code to check its safe."
 echo 'Easy minute to check -only 400 simple lines. put it in all in one file:'
 echo '$ find src/ -name '*.sh' -exec cat {} \; > allcode.sh'
 echo ''
- read -r -p 'Do you want to continue installation?(y/n) ' choice
-    case "$choice" in
-      n|N) echo 'quitting' && exit;;
-      y|Y) 
-      clear
-      
+
+stinstall() {
+    echo 'prepare...'      
       mkdir "$dest"
       mkdir "$dest/lib"
 
@@ -62,13 +59,6 @@ echo ''
               fi 
       done
 
-    
-
-
-
-  
-  #  [[ -e "$HOME/.bashrc" ]] &&
-
     z_has_alias_source=$( grep "$alias_source" "$HOME/.zshrc" )
   
     if [ "$z_has_alias_source" ]; then 
@@ -91,8 +81,20 @@ echo ''
     echo '$ source $HOME/.zshrc or source $HOME/.bashrc'
     echo 'then type st (shorttasks!) to check install worked and for guidance.'
 
-      ;;
+    
+}
+if [ "$1" = '-i' ]; then 
+ read -r -p 'Do you want to continue installation?(y/n) ' choice
+    case "$choice" in
+      n|N) echo 'quitting' && exit;;
+      y|Y) 
+      clear
+      stinstall
+       exit ;;
       *) echo 'Response not valid';;
     esac
+else 
+  stinstall
+fi
 
 

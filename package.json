@@ -6,9 +6,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "sti": "cd src/ && chmod +x install.sh && ./install.sh && cd ../..",
-    "str": "cd src/ chmod +x remove.sh && ./remove.sh && cd ../..",
-    "update": "yarn str && yarn sti",
+    "sti": "cd src/ && chmod +x install.sh && ./install.sh -i && cd ../..",
+    "str": "cd src/ chmod +x remove.sh && ./remove.sh -i && cd ../..",
+    "update": "cd src/ && ./remove.sh && ./install.sh ",
     "shorttasks:install": "yarn sti",
     "install:shorttasks": "yarn sti",
     "remove:shorttasks": "yarn str",
