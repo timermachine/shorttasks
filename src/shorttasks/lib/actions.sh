@@ -41,13 +41,13 @@ function multiaction() {
     printf "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" 
     printf "${Whi}"
      echo ''
-  
+    allowedcount=0
    for dir in $1/*    # list directories in the form "/tmp/dirname/"
     do 
         if [ -d "$dir" ]; then
             # echo "$dir != $inapplicable ?"
             # if [ "$dir" != "$inapplicable" ]; then 
-            allowedcount=0
+          
             if [ "$applicable" = 'any' ] || [ -e "$dir/$applicable" ]; then  
                     printf "${IYel}"
                     echo ''
@@ -102,9 +102,9 @@ function action(){
         echo "$@"  
         return;
     fi
-
+    # slashdot logic. allows forcing single action on current dir ignores applicables:
     # [[ $1 =~ /\. ]] && echo 'slash dot at end: /.' 
-    if [[ $1 =~ /\. ]] || [ "$1" = '-' ] || [ "$1" = '.' ]; then
+    if [[ $1 =~ /\. ]]  || [ "$1" = '.' ]; then
       printf "${IPur}"
       echo "$st: $cmd  $1 $2 $3 $4 $5 $6 $7 $8 $9"
       printf "${Whi}" 
