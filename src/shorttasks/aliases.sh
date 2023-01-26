@@ -1,5 +1,4 @@
 
-alias dir=$HOME/.shorttasks/dir.sh
 alias g=$HOME/.shorttasks/g.sh
 alias ga=$HOME/.shorttasks/ga.sh
 alias gb=$HOME/.shorttasks/gb.sh

@@ -18,8 +18,13 @@ function singleaction() {
     # if [ "$dir" != "$inapplicable" ]; then 
 
         [ -e "$returndir" ] && cd "$1" || exit
-        # echo "$cmd $2 $3 $4 $5 $6 $7 $8 $9 "
-        $cmd "$2" $3 $4 $5 $6 $7 $8 $9 
+         echo "single: $cmd $2 $3 $4 $5 $6 $7 $8 $9" 
+        if [ "$st" = 'gc' ]; then 
+            echo "gc specific action." "$cmd" "\"$2\"" 
+            $cmd "\"$2\"" $3 $4 $5 $6 $7 $8 $9 
+        else
+            $cmd $2 $3 $4 $5 $6 $7 $8 $9 
+        fi
         [ -e "$returndir" ] && cd "$returndir" || exit
     # fi
 }
@@ -44,7 +49,7 @@ function multiaction() {
                     echo ''
                     echo "$dir:"
                     printf "${Whi}" 
-                    singleaction $dir $2 $3 $4 $5 $6 $7 $8 $9
+                    singleaction $dir "$2" $3 $4 $5 $6 $7 $8 $9
                     allowedcount+=1
                 fi
             # else - todo: verbose mode: say skipped as not an applicable git dir etc.
