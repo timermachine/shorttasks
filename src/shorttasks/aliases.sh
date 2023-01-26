@@ -5,6 +5,7 @@ alias gb=$HOME/.shorttasks/gb.sh
 alias gc=$HOME/.shorttasks/gc.sh
 alias gca=$HOME/.shorttasks/gca.sh
 alias gco=$HOME/.shorttasks/gco.sh
+alias gcob=$HOME/.shorttasks/gcob.sh
 alias gs=$HOME/.shorttasks/gs.sh
 alias h=$HOME/.shorttasks/h.sh
 alias itch=$HOME/.shorttasks/itch.sh

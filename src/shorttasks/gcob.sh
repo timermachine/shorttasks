@@ -3,7 +3,7 @@ source "$HOME/.shorttasks/lib/actions.sh"
 source "$HOME/.shorttasks/lib/colors.sh"
 
 st="gco"
-cmd="git checkout "
+cmd="git checkout -b "
 applicable=".git"
 
 
