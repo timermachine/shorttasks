@@ -1,8 +1,10 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+# cd "$(dirname "$0")"
+# source ./lib/actions.sh
+# source ./lib/colors.sh
 
-source ./lib/actions.sh
-source ./lib/colors.sh
+ source "$HOME/.shorttasks/lib/actions.sh"
+ source "$HOME/.shorttasks/lib/colors.sh"
 
 st="gc"
 cmd="git commit -m "
@@ -45,9 +47,14 @@ fi
 #   set -- "${arguments[@]}" "\'" "${message[@]}" "\'"
 
 
+# action "$@"
+
+echo "p1: $1"
 if [ -d "$1" ]; then
     action "$@"
 else
     echo "gc takes dir 'message' "
-    echo "dir children first checked for .git, if none found runs in dir."
+    echo "dir can be the container of the target dirs."
+    echo "or the target its self."
+    # echo "dir children first checked for .git, if none found runs in dir."
 fi

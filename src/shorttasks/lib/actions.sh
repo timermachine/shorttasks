@@ -18,8 +18,12 @@ function singleaction() {
     # if [ "$dir" != "$inapplicable" ]; then 
 
         [ -e "$returndir" ] && cd "$1" || exit
-        # echo "$cmd $2 $3 $4 $5 $6 $7 $8 $9 "
-        $cmd "$2" $3 $4 $5 $6 $7 $8 $9 
+        #  echo "single: $cmd $2 $3 $4 $5 $6 $7 $8 $9" 
+        if [ "$st" = 'gc' ]; then 
+            $cmd "\"$2\"" $3 $4 $5 $6 $7 $8 $9 
+        else
+            $cmd $2 $3 $4 $5 $6 $7 $8 $9 
+        fi
         [ -e "$returndir" ] && cd "$returndir" || exit
     # fi
 }
@@ -28,8 +32,13 @@ function singleaction() {
 function multiaction() {
 
     printf "${IPur}"
-    printf "$st: $cmd $2 $3 $4 $5 $6 $7 $8 $9 ( %s*dirs ) " "$1"
-     [ "$applicable" != 'any' ]  && printf " having %s" "$applicable"
+    printf "$st: (%s*dirs)" "$1"
+    [ "$applicable" != 'any' ]  && printf " [%s]" "$applicable"
+    printf " > "
+    printf "${Whi}"
+    printf "${IYel}"
+    printf  " %s"  "$cmd" 
+    printf "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" 
     printf "${Whi}"
      echo ''
   
@@ -44,7 +53,7 @@ function multiaction() {
                     echo ''
                     echo "$dir:"
                     printf "${Whi}" 
-                    singleaction $dir $2 $3 $4 $5 $6 $7 $8 $9
+                    singleaction $dir "$2" $3 $4 $5 $6 $7 $8 $9
                     allowedcount+=1
                 fi
             # else - todo: verbose mode: say skipped as not an applicable git dir etc.
@@ -55,7 +64,7 @@ function multiaction() {
     # if none of the children were allowable run for parent dir. 
     #  So dont have to g targetdir/. - g targetdir will work.
      if [ "$allowedcount" = 0 ];then
-      singleaction $1 $2 $3 $4 $5 $6 $7 $8 $9
+      singleaction $1 "$2" $3 $4 $5 $6 $7 $8 $9
       allowedcount=0
     fi 
      echo ''

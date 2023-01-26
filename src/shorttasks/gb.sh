@@ -3,7 +3,7 @@
  source "$HOME/.shorttasks/lib/colors.sh"
 
  st="gb"
- cmd="git branch"
+ cmd="git branch "
  applicable=".git"
  
 # todo: substite -l for --long  grr - nice to have.
