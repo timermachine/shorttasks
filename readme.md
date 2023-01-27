@@ -1,5 +1,46 @@
 # ShortTasks
 
+saves you a ton of typing:
+
+| strokes saved | ShortTask | long equivalent                 |
+| ------------- | --------- | ------------------------------- |
+| 2             | g         | git                             |
+| 5             | ga        | git add                         |
+| 8             | gb        | git branch                      |
+| 12            | gc        | git commit -m ''                |
+| 29            | gca       | git commit -a --amend --no-edit |
+| 11            | gco       | git checkout                    |
+| 13            | gcob      | git checkout -b                 |
+| 10            | gs        | git status -s -b                |
+| 1             | h         | gh (github-cli)                 |
+| 4             | pull      | git pull                        |
+| 4             | push      | git push                        |
+| 23            | pushnew   | git push --set-upstream origin  |
+| 6             | n         | npm run                         |
+| 7             | pn        | pnpm run                        |
+| 2             | y         | yarn                            |
+
+- Quick setup / update.
+- Easy to configure / adapt / make your own.
+- Singe / multiple targets simultaneously.
+- No dependencies. - pure shell scripts.
+- Useful for any language, version control, packaging system.
+
+But its more than just about saving keystrokes. The long commands cause mental impedence. You will quickly find what were chores before become second nature flow. And flow matters.
+
+Cli designed for mono/hybrid/poly repos. By default every command runs across multiple targets.
+
+You will love it so much that you will buy me a coffee!
+And if you are a Marmite hater, I would love to know what you think should be changed - and if its a good idea I will buy you a coffee!
+
+## install
+
+## usage
+
+## make your own
+
+My goal is to help developers share code more effectivly - aiming for zero friction actually.
+
 Configure commands with super powers.
 Designed for mono/multi/poly repos.
 Never have to type cd.. again.
@@ -52,21 +93,6 @@ npm run sti
 yarn str # (short tasks remove)
 ```
 
-ShortTasks are made for you by the above install are:
-
-| ShortTask | executes   | example                    | Compared to | key hit saving |
-| --------- | ---------- | -------------------------- | ----------- | -------------- |
-| g         | git        | g app branch -l            |
-| gs        | git status | gs site                    |
-| ga        | git add    | ga uicomponents            |
-| gc        | git commit | gc peers 'commit mmessage' |
-| gp        | git push   | gp web                     |
-| gpl       | git pull   | gpl web                    |
-| n         | npm run    | n app                      |
-| pn        | pnpm run   | pn app                     |
-| y         | yarn       | y app start                |
-
-st : this shortasks help.
 g : git
 ga : git add
 gc : git commit -m ""

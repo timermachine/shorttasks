@@ -13,4 +13,11 @@ if [ "$1" = '-h' ]; then
     exit
 fi
 
-action "$@"
+# target current dir by default:
+ if [ -d "$1" ]; then
+    action "$@"
+ else
+    action . "$@"
+ fi
+
+

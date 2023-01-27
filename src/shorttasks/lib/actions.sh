@@ -42,9 +42,8 @@ function multiaction() {
     printf "${Whi}"
     printf "${IYel}"
     printf  " %s"  "$cmd" 
-    printf "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" 
+    echo "$2 $3 $4 $5 $6 $7 $8 $9" 
     printf "${Whi}"
-     echo ''
     allowedcount=0
    for dir in $1/*    # list directories in the form "/tmp/dirname/"
     do 
