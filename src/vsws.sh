@@ -7,6 +7,9 @@
 
   filter st actions: each one as a single
 
+  react active ws from ~/.shortasks/.strc 
+  switch active ws.
+
 '
 
 grep -o '"path": "[^"]*' ../../demo.code-workspace | grep -o '[^"]*$'
