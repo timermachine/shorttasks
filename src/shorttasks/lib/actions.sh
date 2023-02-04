@@ -13,7 +13,7 @@ function singleaction() {
     returndir=$PWD
     #  echo "action in $1"
     # todo: dry run: show what it would do, and ask confirm if any params are -dr
-    echo " cd $1 && $cmd $2 $3 $4 $5 $6 $7 $8 $9 "
+    # echo " cd $1 && $cmd $2 $3 $4 $5 $6 $7 $8 $9 "
     #  echo "$dir != $inapplicable ?"
     # if [ "$dir" != "$inapplicable" ]; then
 
@@ -23,10 +23,6 @@ function singleaction() {
         # quote wrap the message string
         $cmd "\"$2\"" $3 $4 $5 $6 $7 $8 $9
     else
-        # if [ "$st" = 'XXXh' ]; then
-        #     $cmd "$2" "$3" "\"$4\"" "\"$5\"" $6 $7 $8 $9
-        # git add . is a pain - edge case. maybe add the dot to the command its self?
-
         $cmd $2 $3 $4 $5 $6 $7 $8 $9
 
     fi
@@ -40,15 +36,15 @@ function singleaction() {
 # if no children applicable, apply to the given single dir.
 function multiaction() {
 
-    printf "${IPur}"
-    printf "$st: (%s*dirs) " "$1"
-    [ "$applicable" != 'any' ] && printf " [%s]" "$applicable"
-    printf " > "
-    printf "${Whi}"
-    printf "${IYel}"
-    printf " %s" " $cmd"
-    echo "$2 $3 $4 $5 $6 $7 $8 $9"
-    printf "${Whi}"
+    # printf "${IPur}"
+    # printf "$st: (%s*dirs) " "$1"
+    # [ "$applicable" != 'any' ] && printf " [%s]" "$applicable"
+    # printf " > "
+    # printf "${Whi}"
+    # printf "${IYel}"
+    # printf " %s" " $cmd"
+    # echo "$2 $3 $4 $5 $6 $7 $8 $9"
+    # printf "${Whi}"
     allowedcount=0
     for dir in $1/*; do # list directories in the form "/tmp/dirname/"
         if [ -d "$dir" ]; then
@@ -82,10 +78,10 @@ function multiaction() {
         # todo: verbose mode may show what was excluded and why
         # echo "debug: $allowedcount not zero"
         if [ "$applicable" = 'any' ] || [ -e "$1/$applicable" ]; then
-            printf "${IYel}"
-            echo ''
-            echo "$dir:"
-            printf "${Whi}"
+            # printf "${IYel}"
+            # echo ''
+            # echo "$dir:"
+            # printf "${Whi}"
             singleaction $1 "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
             allowedcount+=1
         fi
@@ -121,9 +117,9 @@ function action() {
     # slashdot logic. allows forcing single action on current dir ignores applicables:
     # [[ $1 =~ /\. ]] && echo 'slash dot at end: /.'
     if [[ $1 =~ /\. ]] || [ "$1" = '.' ]; then
-        printf "${IPur}"
-        echo "$st: $cmd  $1 $2 $3 $4 $5 $6 $7 $8 $9"
-        printf "${Whi}"
+        # printf "${IPur}"
+        # echo "$st: $cmd  $1 $2 $3 $4 $5 $6 $7 $8 $9"
+        # printf "${Whi}"
         singleaction "$@"
     else
         #  first param a directory (includes .)
@@ -144,21 +140,19 @@ function action() {
                 # if one or more wsfolders:
                 if [ "${#wsfolders}" -gt 0 ]; then
                     echo "filtered to workspace: $active_workspace:"
+                    printf "${BYel}"
                     echo "$wsfolders"
-                    echo "---------->"
+                    printf "${Whi}"
                     echo ''
 
                     for a in $wsfolders; do
+                        printf "${BYel}"
                         echo "$a"
+                        printf "${Whi}"
                         multiaction "$a" "$@"
                     done
                     # multiaction "$wsfolders" "$@"
 
-                    echo "(filtered to workspace: $active_workspace)"
-                    echo "$wsfolders"
-                    echo "<----------"
-                    echo ''
-                    # echo "st -ws [vscode workspace file] to set workspace]. st -h for command help"
                     return
                 fi
             else

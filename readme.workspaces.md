@@ -93,5 +93,13 @@ gc takes dir 'message'
 dir can be the container of the target dirs.
 or the target its self.
 
-highlight workspace title on output (currently plain white)
-could indent / |\_\_ to show when acting on child dir.
+1. pretty up workspace echo on action.
+   highlight workspace title on output (currently plain white)
+   could indent / |\_\_ to show when acting on child dir. √
+
+1.1 yarn.lock - detected as dir? wtf?
+1.2 only need to state the comd \*dirs bit once.
+
+2. nicer st -ws options
+
+3. readme, publish.

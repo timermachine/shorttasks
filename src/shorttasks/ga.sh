@@ -17,7 +17,8 @@ applicable=".git"
 if [ "$1" = '-h' ]; then
     echo "ga ( $cmd)" &&
         echo "shortcut script ~/.shorttasks/gco.sh" &&
-        echo "ga ./ . "
+        echo "ga  adds . on dirs which are git initialised (have .git folder)"
+    echo "dont add the extra dot yourself"
     exit
 fi
 action "$@"
