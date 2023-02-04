@@ -18,15 +18,19 @@ function singleaction() {
     # if [ "$dir" != "$inapplicable" ]; then
 
     [ -e "$returndir" ] && cd "$1" || exit
-    #  echo "single: $cmd $2 $3 $4 $5 $6 $7 $8 $9"
-    if [ "$st" = 'gc' ]; then
-        # quote wrap the message string
-        $cmd "\"$2\"" $3 $4 $5 $6 $7 $8 $9
+    echo "is a dry run: $dryrun"
+    if [ "$dryrun" = true ]; then
+        echo "dry run: $cmd $2 $3 $4 $5 $6 $7 $8 $9"
     else
-        $cmd $2 $3 $4 $5 $6 $7 $8 $9
+        if [ "$st" = 'gc' ]; then
+            # quote wrap the message string
+            $cmd "\"$2\"" $3 $4 $5 $6 $7 $8 $9
+        else
+            $cmd $2 $3 $4 $5 $6 $7 $8 $9
 
+        fi
+        [ -e "$returndir" ] && cd "$returndir" || exit
     fi
-    [ -e "$returndir" ] && cd "$returndir" || exit
     # fi
 }
 
