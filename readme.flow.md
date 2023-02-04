@@ -1,8 +1,18 @@
+.rc config:
+active ws
+
 cmd config:
 allowable: eg .git
 
 [shortask][pathspec] [command paramaters]
 
+no pathspec:
+active ws:
+execute for each ws folder.
+no active ws:
+execute for each child folder, then parent if no children applicable.
+
+has pathspec:
 [pathspec] ends in dot :
 execute command only on given speicif directory. (if just . on current directory)
 allowable not applied. (eg can do `$ g . clone` `$ y anydir/. init`)

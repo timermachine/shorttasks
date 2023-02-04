@@ -13,20 +13,14 @@ if [ "$1" = '-h' ]; then
    exit
 fi
 
-# TD: st -ws  path/to/ws to active.
-# TD: check no pathspec, check active ws:
-# TD: ws valid path? store as absolute path/relative (pros/cons?)
-#  if active ws?
-wsfolders=$(grep -o '"path": "[^"]*' demo.code-workspace | grep -o '[^"]*$')
-for a in $wsfolders; do
-   echo "$a"
-   singleaction "$a" "$@"
-done
 #  singleaction each
 
-# target current dir by default:
-# if [ -d "$1" ]; then
-#    action "$@"
-# else
-#    action . "$@"
-# fi
+#  target current dir by default:
+if [ -d "$1" ]; then
+   action "$@"
+else
+   action . "$@"
+fi
+
+# st -l
+# list settings. if ws set, list its paths too.

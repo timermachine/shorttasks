@@ -1,18 +1,87 @@
 # workspaces
 
-Say you have dozens of projects, some of them sharing common ones.
+Say you have dozens of projects\*1, some of them sharing common ones.
 You can switch sherpa between vscode workspaces. Then any action - git/yarn etc will
 only be applied to those projects.
 
 ```
-$ sp -ws sherpa/acme.code-workspace
-$ gcob newfeaturebranch
+$ sip -ws sherpa/yi
+$ gcob featureY
 $ gs
 ```
 
-This is great for context switching. ie you might be working on feature X, but have to switch to
-fix feature Y. With sherpa you can quickly add / commit your code for the currently set workspace set,
-Switch active workspace, checkout the branch you need to work on, and easily switch back when done.
+This is great for context switching. ie you might be working on feature Y, but have to switch to fix feature X. With sherpa you can quickly add, commit your code for the currently set workspace across projects,
+Switch active workspace, checkout the branch you need to work on, and easily switch back when done. For example:
+
+```
+# save work:
+ga .
+gc 'wip featre Y'
+
+# switch context:
+
+sip -ws sherpa/xi
+gco main
+pull
+gcob fixXissue3
+y dev
+
+# fix done:
+ga . && gc 'fixed issue 3'
+push
+h uicompoents create pr fixXissue3
+
+# back to what you were doing:
+sip -ws sherpa/yi
+y dev
+```
+
 In addition, when submitting a pull request for the fix, whoever is performing the code review can also
-easily switch to the relevant workspace, checkout the matching branch for any projects changed. This is why
-it is best to keep the workspaces under shared source control in your forked sherpa repo.
+easily switch to the relevant workspace, checkout the matching branch for all related projects/repos changed. This is why it is best to keep the workspaces under shared source control in your forked sherpa repo. They then form a
+sharable workspace catelog (of the logical collections of projects.) This scenario's workflow might look like this:
+
+Notes:
+
+Quickly open the changed files:
+Workspaces store directory paths, not files. Open the files for a commit across mutliple repos is easy.
+In vscode goto the commit pane in the version control panel, right click on the commit, Open Changes, Open Files.
+
+Pull Request for multiple repos/projects:
+A good workflow is make the pull request for the most pertinent repo (usually the one with the most changes).
+Any other team member can easily pull the cross repo branch name for all the related repos with Sherpa. For example the reviewer may:
+
+```
+
+```
+
+\*1 projects can mean indiviual repositories (when using a multi repo setup) or folders within a monorepo.
+
+Foi:
+
+-d check overrides workspace. √
+st -ws √
+apply allowables when ws - (doesnt appy on singles and that is right) there are tradeoffs to multi - allowables.
+
+peers not bubbling to run on parent.
+children shouldnt try - as applicable not there
+
+ok, this is a bit complicated.
+
+ws:
+st, demo, peers
+st: √
+demo: no git (doesnt try children first)
+peers: has git, tries chidren, doesnt then try parent.
+try reversing order dirs tried to see? √ fixed. (multiaction - does children then parent, still wants single dir as param to start with. -just still works if given multiple dirs (fn globbin!))
+
+may want allowable override/toggle on/off.
+st -i (info)
+st list workspace paths ? maybe
+
+why shows yarn.lock checked / shown? gs (ws)
+
+-ws none - to unset. or -wsn / -wsy
+i think -ws no dir:
+show active ws, and dirs.
+show all workspaces that are siblings
+give option to turn ws filtering on / off.

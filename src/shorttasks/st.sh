@@ -39,3 +39,15 @@ if [ "$1" = '-h' ]; then
     echo '$ gc . "commit message"         - runs in current folder.'
     echo '$ gs                            - git status -s for every first level dir having package.json '
 fi
+
+if [ "$1" = '-ws' ]; then
+    if [[ -e ".strc" ]]; then
+        # set aw to $2 if it exists.
+        if [[ -e "$2" ]]; then
+            echo "active_workspace=$2" >.strc
+            echo "st workspace filter set to $2"
+        else
+            echo "not found. useage: st -ws vscode-workspace-file"
+        fi
+    fi
+fi

@@ -32,16 +32,19 @@ function singleaction() {
     # fi
 }
 
-# apply child dirs:
+# multiaction :
+# takes single directory,
+# applies to  its child dirs first (if they pass applicable)
+# if no children applicable, apply to the given single dir.
 function multiaction() {
 
     printf "${IPur}"
-    printf "$st: (%s*dirs)" "$1"
+    printf "$st: (%s*dirs) " "$1"
     [ "$applicable" != 'any' ] && printf " [%s]" "$applicable"
     printf " > "
     printf "${Whi}"
     printf "${IYel}"
-    printf " %s" "$cmd"
+    printf " %s" " $cmd"
     echo "$2 $3 $4 $5 $6 $7 $8 $9"
     printf "${Whi}"
     allowedcount=0
@@ -57,16 +60,25 @@ function multiaction() {
                 printf "${Whi}"
                 singleaction $dir "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
                 allowedcount+=1
+
+            # todo: maybe enable with verbose option :
+            # else
+            #     printf "${IYel}"
+            #     echo ''
+            #     echo "$dir: excluded (has no $applicable)"
+            #     printf "${Whi}"
+
             fi
         # else - todo: verbose mode: say skipped as not an applicable git dir etc.
         fi
-        # fi
 
     done
+
     # if none of the children were allowable run for parent dir.
     #  So dont have to g targetdir/. - g targetdir will work.
     if [ "$allowedcount" = 0 ]; then
-
+        # todo: verbose mode may show what was excluded and why
+        # echo "debug: $allowedcount not zero"
         if [ "$applicable" = 'any' ] || [ -e "$1/$applicable" ]; then
             printf "${IYel}"
             echo ''
@@ -118,9 +130,40 @@ function action() {
         else
             # eg gf -s  (defaults to execute for all children of .)
             # also for no params. workspace lookup prob goes here.
-            multiaction "." "$@"
+            # vscode workspace filtering: in working dir /bubble up folders
+            strc="./.strc"
+            # first check 1st param not a dir (move to check below **1)
+            #  if [ -d "$1" ]; then
+            if [[ -e "$strc" ]]; then
+                # if active ws set, and found: $active_workspace
+                source "$strc"
+
+                wsfolders=$(grep -o '"path": "[^"]*' "$active_workspace" | grep -o '[^"]*$')
+                # if one or more wsfolders:
+                if [ "${#wsfolders}" -gt 0 ]; then
+                    echo "filtered to workspace: $active_workspace:"
+                    echo "$wsfolders"
+                    echo "---------->"
+
+                    for a in $wsfolders; do
+                        echo "$a"
+                        multiaction "$a" "$@"
+                    done
+                    # multiaction "$wsfolders" "$@"
+
+                    echo "filtered to workspace: $active_workspace"
+                    echo "st -ws [vscode workspace file] to set workspace]. st -h for command help"
+                    return
+                fi
+            else
+                # no params, no workspace filter:
+                multiaction "." "$@"
+            fi
+
         fi
+
     fi
+
 }
 
 # helper functions:

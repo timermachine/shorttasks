@@ -11,5 +11,3 @@
   switch active ws.
 
 '
-
-grep -o '"path": "[^"]*' ../../demo.code-workspace | grep -o '[^"]*$'
