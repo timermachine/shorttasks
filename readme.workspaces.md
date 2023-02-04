@@ -119,18 +119,31 @@ read and rewrite toggles on ws change.
 
 ---
 
-## Zulu. dry run really essential.
+OMEGA.
+script(s) out of peers into st- like:
+stws -init /stwsi
 
+√√√√
 Yankee. generate help on install - super cool! - this will then kick the ass off oh my!
 
 ---
 
-get cmd from file.√
-right pad depending on length.√
-ignore libs
-write to file: sth.sh
+## VICTOR:
 
----
+readme - clear concise.
+may want to do (some) demo,
+video demo for youtube. - this shit is hot - it deserves a video,
+might even make money from the video!!!
+
+## Unicorn: tests, collaborators, share, compare / compatible with ?
+
+## Tango: accessible components - radix? get back to react dude! leave this tool and move on.
+
+## Romeo: get some youtube dollars to survive end of month.
+
+PARKING LOT:
+
+## Zulu. dry run really essential.
 
 cherry on the cake:
 
@@ -144,10 +157,13 @@ applicable: (can only action if this dir/file is present)
 
 ---
 
-## VICTOR: readme - clear concise.
+allow organising scripts by more than one folder.
 
-## Unicorn: tests, collaborators, share, compare / compatible with ?
+---
 
-## Tango: accessible components - radix? get back to react dude! leave this tool and move on.
+Z.peers to st:
+stwsi - hmm needs an st clone below it (at moment) - not sure of value of global availiablity.
 
-## Romeo: get some youtube dollars to survive end of month.
+Y.stgen : generate command files.
+
+X. enough. promote it.

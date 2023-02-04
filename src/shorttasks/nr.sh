@@ -2,8 +2,8 @@
 source "$HOME/.shorttasks/lib/actions.sh"
 source "$HOME/.shorttasks/lib/colors.sh"
 
-st="n"
-cmd="npm "
+st="nr"
+cmd="npm run"
 applicable="package.json"
 
 [ "$1" = '-h' ] &&

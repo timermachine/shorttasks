@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # cmd for documentation only
-cmd="st Sets workspace filter for all commands."
+cmd="Sets active workspace as filter for all commands."
 
 if [[ -f ".strc" ]]; then
     # set aw to $2 if it exists.

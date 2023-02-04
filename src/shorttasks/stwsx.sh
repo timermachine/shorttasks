@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # cmd for documentation only
-cmd="st Unsets workspace filter for all commands."
+cmd="Unsets active workspace filter for all commands."
 
 if [[ -e ".strc" ]]; then
     echo "active_workspace=nooperation" >.strc

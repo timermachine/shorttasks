@@ -28,7 +28,7 @@ stinstall() {
   touch $alias_file
   echo '' >$alias_file
 
-  help_file='./shorttasks/lib/help.txt'
+  help_file='./shorttasks/lib/generatedhelp.txt'
 
   touch $help_file
   echo '' >$help_file
@@ -48,7 +48,7 @@ stinstall() {
 
         #  get cmd from file grep? cmd="ls -1 --color"
         spaces=$((10 - ${#b}))
-        printf "     %s %*s :   %s \n" "$b" "$spaces" "" "$cmd" >>$help_file
+        printf "     %s %*s :      %s \n" "$b" "$spaces" "" "$cmd" >>$help_file
       fi
 
     fi
