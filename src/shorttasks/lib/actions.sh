@@ -13,20 +13,22 @@ function singleaction() {
     returndir=$PWD
     #  echo "action in $1"
     # todo: dry run: show what it would do, and ask confirm if any params are -dr
-    #  echo " cd $1 && $cmd $2 $3 $4 $5 $6 $7 $8 $9 "
+    echo " cd $1 && $cmd $2 $3 $4 $5 $6 $7 $8 $9 "
     #  echo "$dir != $inapplicable ?"
     # if [ "$dir" != "$inapplicable" ]; then
 
     [ -e "$returndir" ] && cd "$1" || exit
     #  echo "single: $cmd $2 $3 $4 $5 $6 $7 $8 $9"
     if [ "$st" = 'gc' ]; then
+        # quote wrap the message string
         $cmd "\"$2\"" $3 $4 $5 $6 $7 $8 $9
     else
-        if [ "$st" = 'XXXh' ]; then
-            $cmd "$2" "$3" "\"$4\"" "\"$5\"" $6 $7 $8 $9
-        else
-            $cmd $2 $3 $4 $5 $6 $7 $8 $9
-        fi
+        # if [ "$st" = 'XXXh' ]; then
+        #     $cmd "$2" "$3" "\"$4\"" "\"$5\"" $6 $7 $8 $9
+        # git add . is a pain - edge case. maybe add the dot to the command its self?
+
+        $cmd $2 $3 $4 $5 $6 $7 $8 $9
+
     fi
     [ -e "$returndir" ] && cd "$returndir" || exit
     # fi
@@ -144,6 +146,7 @@ function action() {
                     echo "filtered to workspace: $active_workspace:"
                     echo "$wsfolders"
                     echo "---------->"
+                    echo ''
 
                     for a in $wsfolders; do
                         echo "$a"
@@ -151,8 +154,11 @@ function action() {
                     done
                     # multiaction "$wsfolders" "$@"
 
-                    echo "filtered to workspace: $active_workspace"
-                    echo "st -ws [vscode workspace file] to set workspace]. st -h for command help"
+                    echo "(filtered to workspace: $active_workspace)"
+                    echo "$wsfolders"
+                    echo "<----------"
+                    echo ''
+                    # echo "st -ws [vscode workspace file] to set workspace]. st -h for command help"
                     return
                 fi
             else

@@ -85,3 +85,13 @@ i think -ws no dir:
 show active ws, and dirs.
 show all workspaces that are siblings
 give option to turn ws filtering on / off.
+
+gc for workspaces - remember its a bit of a special case. hmmmm.
+
+\$ gc 'workspaces'
+gc takes dir 'message'
+dir can be the container of the target dirs.
+or the target its self.
+
+highlight workspace title on output (currently plain white)
+could indent / |\_\_ to show when acting on child dir.
