@@ -161,12 +161,20 @@ allow organising scripts by more than one folder.
 
 ---
 
-Z.peers to st:
-stwsi - hmm needs an st clone below it (at moment) - not sure of value of global availiablity.
-
-Y.stgen : generate command files.
+Y.stgen : generate command files. √√√√!!!! fuck yeah!!! with dry run too!!!!!! omg!
 
 X. spinner.
 https://unix.stackexchange.com/questions/225179/display-spinner-while-waiting-for-some-process-to-finish
 
 X. enough. promote it.
+
+sth - show which have dr option. dont list - too muchnoise
+
+speed option:
+if strictly use containing folders i.e.
+never an allowable directly a child of another allowable,
+then can check parent allowable before children.
+(optimisation)
+
+Z.peers to st:
+stwsi - hmm needs an st clone below it (at moment) - not sure of value of global availiablity.

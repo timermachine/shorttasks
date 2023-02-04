@@ -23,4 +23,3 @@
      stwsx       :      "Unsets active workspace filter for all commands." 
      y           :      "yarn" 
      zu          :      'git status -s -b' 
-     zudr        :       

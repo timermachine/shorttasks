@@ -17,9 +17,9 @@
 shorttaskdir="$PWD/shorttasks/src/shorttasks"
 
 # cmd for documentation only
-cmd=" Wizzard to generate your own custom st commands."
+cmd="Wizzard to generate your own custom st commands."
 
-echo "$cmd"
+# echo "$cmd"
 echo "Enter command name: (eg gs for git status)"
 read command_name
 

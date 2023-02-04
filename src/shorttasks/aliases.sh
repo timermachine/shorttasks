@@ -23,4 +23,3 @@ alias stws=$HOME/.shorttasks/stws.sh
 alias stwsx=$HOME/.shorttasks/stwsx.sh
 alias y=$HOME/.shorttasks/y.sh
 alias zu=$HOME/.shorttasks/zu.sh
-alias zudr=$HOME/.shorttasks/zudr.sh

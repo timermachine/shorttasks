@@ -41,8 +41,11 @@ stinstall() {
 
       line="alias $b"'=$HOME/.shorttasks/'"$a"
       # exclude alaises its self as in shorttasks folder.
-      if [ $b != 'aliases' ]; then
+      if [ $b != 'aliases' ] && [[ $b != *dr ]]; then
+        # todo - nice to have: check if a dr file made, indicate (dr)
+        # if [ -f "./shorttasks/$f dr" ]
         echo $line >>$alias_file
+        # if dr version file: (dr)
 
         cmd="$(echo $(grep 'cmd=' $f) | cut -d'=' -f2)"
 
