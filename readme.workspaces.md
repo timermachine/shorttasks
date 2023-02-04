@@ -97,9 +97,57 @@ or the target its self.
    highlight workspace title on output (currently plain white)
    could indent / |\_\_ to show when acting on child dir. √
 
-1.1 yarn.lock - detected as dir? wtf?
-1.2 only need to state the comd \*dirs bit once.
+1.2 only need to state the comd \*dirs bit once. √
 
 2. nicer st -ws options
+   dont worry too much - draft 1. run through demo maker - will see how api can be improved.
 
-3. readme, publish.
+3) readme, publish.
+
+4) some tasks can take a while - a spinner would be awesome!
+
+changing workspace:
+code launch it
+interactive mode : list availiable workspaces.
+turn workspace off.\*
+
+ctl-J my new best shortcut! - no more dragging fucking terminal window around!
+
+dryrun (shows action, doesnt action it)
+verbose (shows excluded dirs)
+read and rewrite toggles on ws change.
+
+---
+
+## Zulu. dry run really essential.
+
+Yankee. generate help on install - super cool! - this will then kick the ass off oh my!
+
+---
+
+get cmd from file.√
+right pad depending on length.√
+ignore libs
+write to file: sth.sh
+
+---
+
+cherry on the cake:
+
+## Wisky. works with oh my scripts.
+
+Xray. wizzard - geneate tasks: maybe.
+
+name: (what you type to invoke command)
+command:
+applicable: (can only action if this dir/file is present)
+
+---
+
+## VICTOR: readme - clear concise.
+
+## Unicorn: tests, collaborators, share, compare / compatible with ?
+
+## Tango: accessible components - radix? get back to react dude! leave this tool and move on.
+
+## Romeo: get some youtube dollars to survive end of month.

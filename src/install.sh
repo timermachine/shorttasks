@@ -17,10 +17,9 @@ echo "You should look at the code to check its safe."
 echo 'Easy minute to check -only 400 simple lines. put it in all in one file:'
 echo '$ find src/ -name '*.sh' -exec cat {} \; > allcode.sh'
 echo ''
-#
 
 stinstall() {
-  echo 'prepare...'
+  # echo 'prepare...'
   mkdir "$dest"
   mkdir "$dest/lib"
 
@@ -29,21 +28,35 @@ stinstall() {
   touch $alias_file
   echo '' >$alias_file
 
+  help_file='./shorttasks/lib/help.txt'
+
+  touch $help_file
+  echo '' >$help_file
+
   # update aliases.sh based on all scripts in src/shorttasks/
   for f in ./shorttasks/*; do
-    if [[ -e "$f" ]]; then
+    if [[ -f "$f" ]]; then
       a=${f/.\/shorttasks\//''}
       b=${a/'.sh'/''}
 
       line="alias $b"'=$HOME/.shorttasks/'"$a"
       # exclude alaises its self as in shorttasks folder.
-      [ $b != 'aliases' ] && echo $line >>$alias_file
+      if [ $b != 'aliases' ]; then
+        echo $line >>$alias_file
+
+        cmd="$(echo $(grep 'cmd=' $f) | cut -d'=' -f2)"
+
+        #  get cmd from file grep? cmd="ls -1 --color"
+        spaces=$((10 - ${#b}))
+        printf "     %s %*s :   %s \n" "$b" "$spaces" "" "$cmd" >>$help_file
+      fi
+
     fi
   done
 
   # copy tasks/* to ~/.shorttasks/
   for f in ./shorttasks/*; do
-    if [[ -e "$f" ]]; then
+    if [[ -f "$f" ]]; then
       # echo "$f $dest${f##*/}"
       cp "$f" "$dest/${f##*/}"
       chmod a+x "$dest/${f##*/}"
@@ -77,9 +90,9 @@ stinstall() {
 
   echo
   echo 'Installation complete.'
-  echo 'ONE MANUAL STEP, and all done: Do:'
+  echo 'ONE MANUAL STEP, and all done: restart terminal or:'
   echo '$ source $HOME/.zshrc or source $HOME/.bashrc'
-  echo 'then type st (shorttasks!) to check install worked and for guidance.'
+  echo 'then type sth (shorttasks help) to check install worked and for guidance.'
 
 }
 

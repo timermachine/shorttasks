@@ -135,31 +135,36 @@ function action() {
             if [[ -e "$strc" ]]; then
                 # if active ws set, and found: $active_workspace
                 source "$strc"
-
-                wsfolders=$(grep -o '"path": "[^"]*' "$active_workspace" | grep -o '[^"]*$')
-                # if one or more wsfolders:
-                if [ "${#wsfolders}" -gt 0 ]; then
-                    echo "filtered to workspace: $active_workspace:"
-                    printf "${BYel}"
-                    echo "$wsfolders"
-                    printf "${Whi}"
-                    echo ''
-
-                    for a in $wsfolders; do
+                # todo: if active_workspace set?
+                if [ "$active_workspace" != 'nooperation' ] && [[ -e "$active_workspace" ]]; then
+                    wsfolders=$(grep -o '"path": "[^"]*' "$active_workspace" | grep -o '[^"]*$')
+                    # if one or more wsfolders:
+                    if [ "${#wsfolders}" -gt 0 ]; then
+                        printf "${Yel}"
+                        echo "Filtered to workspace: $active_workspace:"
                         printf "${BYel}"
-                        echo "$a"
+                        echo "$wsfolders"
                         printf "${Whi}"
-                        multiaction "$a" "$@"
-                    done
-                    # multiaction "$wsfolders" "$@"
+                        echo ''
 
-                    return
+                        for a in $wsfolders; do
+                            printf "${BYel}"
+                            echo "$a"
+                            printf "${Whi}"
+                            multiaction "$a" "$@"
+                        done
+                        # multiaction "$wsfolders" "$@"
+
+                        return
+                    fi
+                # else
+                #     echo "$active_workspace file not found"
                 fi
-            else
-                # no params, no workspace filter:
-                multiaction "." "$@"
-            fi
+                # else
+                #     # no params, no workspace filter:
 
+            fi
+            multiaction "." "$@"
         fi
 
     fi
