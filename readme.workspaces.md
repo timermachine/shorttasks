@@ -166,4 +166,7 @@ stwsi - hmm needs an st clone below it (at moment) - not sure of value of global
 
 Y.stgen : generate command files.
 
+X. spinner.
+https://unix.stackexchange.com/questions/225179/display-spinner-while-waiting-for-some-process-to-finish
+
 X. enough. promote it.
