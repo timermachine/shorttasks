@@ -1,3 +1,3 @@
 #!/bin/bash
 dryrun=true
-/Users/henry/.shorttasks/zu.sh "$@" 
+source /Users/henry/.shorttasks/zu.sh 

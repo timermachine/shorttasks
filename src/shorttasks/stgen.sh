@@ -43,7 +43,7 @@ if [ $make_dry_run = 'y' ] || [ $make_dry_run = 'Y' ]; then
 
     echo '#!/bin/bash' >"$drscript_file"
     echo 'dryrun=true' >>"$drscript_file"
-    echo "$HOME/.shorttasks/$command_name.sh \"\$@\" " >>"$drscript_file"
+    echo "source $HOME/.shorttasks/$command_name.sh " >>"$drscript_file"
 fi
 
 echo "Enter what command executes (eg git  status -s -b)"
@@ -65,7 +65,7 @@ echo "applicable='$command_applicable'" >>"$script_file"
 echo ' ' >>"$script_file"
 
 echo 'if [ "$1" = '-h' ]; then' >>"$script_file"
-echo '"ga ( $cmd)"' >>"$script_file"
+echo '"$command_name ( $command_execute)"' >>"$script_file"
 echo ' exit' >>"$script_file"
 echo 'fi' >>"$script_file"
 

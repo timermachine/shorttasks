@@ -18,9 +18,9 @@ function singleaction() {
     # if [ "$dir" != "$inapplicable" ]; then
 
     [ -e "$returndir" ] && cd "$1" || exit
-    echo "is a dry run: $dryrun"
+    # echo "is a dry run: $dryrun ."
     if [ "$dryrun" = true ]; then
-        echo "dry run: $cmd $2 $3 $4 $5 $6 $7 $8 $9"
+        echo "$dr> $cmd $2 $3 $4 $5 $6 $7 $8 $9"
     else
         if [ "$st" = 'gc' ]; then
             # quote wrap the message string
@@ -29,9 +29,9 @@ function singleaction() {
             $cmd $2 $3 $4 $5 $6 $7 $8 $9
 
         fi
-        [ -e "$returndir" ] && cd "$returndir" || exit
     fi
-    # fi
+    [ -e "$returndir" ] && cd "$returndir" || exit
+
 }
 
 # multiaction :
@@ -39,16 +39,17 @@ function singleaction() {
 # applies to  its child dirs first (if they pass applicable)
 # if no children applicable, apply to the given single dir.
 function multiaction() {
-
-    # printf "${IPur}"
-    # printf "$st: (%s*dirs) " "$1"
-    # [ "$applicable" != 'any' ] && printf " [%s]" "$applicable"
-    # printf " > "
-    # printf "${Whi}"
-    # printf "${IYel}"
-    # printf " %s" " $cmd"
-    # echo "$2 $3 $4 $5 $6 $7 $8 $9"
-    # printf "${Whi}"
+    if [ "$dryrun" = true ]; then
+        printf "${IPur}"
+        printf "$st: (%s*dirs) " "$1"
+        [ "$applicable" != 'any' ] && printf " [%s]" "$applicable"
+        printf " > "
+        printf "${Whi}"
+        printf "${IYel}"
+        printf " %s" " $cmd"
+        echo "$2 $3 $4 $5 $6 $7 $8 $9"
+        printf "${Whi}"
+    fi
     allowedcount=0
     for dir in $1/*; do # list directories in the form "/tmp/dirname/"
         if [ -d "$dir" ]; then
@@ -63,13 +64,14 @@ function multiaction() {
                 singleaction $dir "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
                 allowedcount+=1
 
-            # todo: maybe enable with verbose option :
-            # else
-            #     printf "${IYel}"
-            #     echo ''
-            #     echo "$dir: excluded (has no $applicable)"
-            #     printf "${Whi}"
-
+                # todo: maybe enable with verbose option :
+            else
+                if [ "$dryrun" = true ]; then
+                    printf "${IYel}"
+                    echo ''
+                    echo "$dir: excluded (has no $applicable)"
+                    printf "${Whi}"
+                fi
             fi
         # else - todo: verbose mode: say skipped as not an applicable git dir etc.
         fi
@@ -103,8 +105,12 @@ function action() {
     # echo "action $*"
 
     # mode 1: *dirs  2: single given dir.
-    if [ $mode = 2 ]; then
-        singleaction "$@" && return
+    # if [ $mode = 2 ]; then
+    #     singleaction "$@" && return
+    # fi
+
+    if [ "$dryrun" = true ]; then
+        echo 'Dry Run: show effect, does not execute.'
     fi
 
     # prevent globbing patters

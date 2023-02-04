@@ -22,5 +22,5 @@
      stws        :      "Sets active workspace as filter for all commands." 
      stwsx       :      "Unsets active workspace filter for all commands." 
      y           :      "yarn" 
-     zu          :      'ls -la' 
+     zu          :      'git status -s -b' 
      zudr        :       

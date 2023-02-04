@@ -3,11 +3,11 @@ source "$HOME/.shorttasks/lib/actions.sh"
 source "$HOME/.shorttasks/lib/colors.sh"
 
 st='zu'
-cmd='ls -la'
+cmd='git status -s -b'
 applicable='.git'
  
 if [ "$1" = -h ]; then
-"ga ( $cmd)"
+"$command_name ( $command_execute)"
  exit
 fi
 action "$@"
