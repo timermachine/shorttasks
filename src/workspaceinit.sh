@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# create symlinks from ../ to all files in /.workspace-
-root (if dont already exist)
-# cd .. && ln -s  peers/src/package.workspace.json ./package.json && yarn install && cd peers
-#todo - check in peers directory safety check
-# ln -s  ./src/workspace-
-root package.workspace.json ../package.json
-# todo: .hidden files not caught. - have a dot dir as did with ST.
+# Must be run from shorttasks/. folder.
+
+#  symlinks from ../ to all files in folders :
+#  head-files: package.json
 
 returndir=$PWD
 dest='./'
@@ -21,33 +18,47 @@ echo 'and all changes will be prompted.'
 
 read -p "continue..." </dev/tty
 
-for f in "$returndir"/src/workspace-
-root/*; do
+# prefilight checks
+okproceed=true
+for f in "$returndir"/head-files/*; do
     # link all files including hidden eg .lintrc
-     if [[ -f "$f" ]]; then 
-        # echo "linking: $f $dest${f##*/}" 
-         ln -s  "$f" "$dest/${f##*/}"
-     fi 
+    if [[ ! -f "$dest/.${f##*/}" ]]; then
+        echo "target file already exists: $dest/.${f##*/}"
+        okproceed=false
+    fi
 done
-# only difference is dot prefixed to filename
-for f in "$returndir"/src/workspace-
-root-hidden/*; do
+for f in "$returndir"/head-dotfiles/*; do
     # link all files including hidden eg .lintrc
-     if [[ -f "$f" ]]; then 
-        # echo "linking: $f $dest${f##*/}" 
-         ln -s  "$f" "$dest/.${f##*/}"
-     fi 
+    if [[ ! -f "$dest/${f##*/}" ]]; then
+        echo "target file already exists: $dest/${f##*/}"
+        okproceed=false
+    fi
+done
+
+if [ "$okproceed" == true ]; then
+    echo "preflight checks fail. Initialisation  cancelled to prevent overwriting of target file(s)"
+    exit
+fi
+
+for f in "$returndir"/head-files/*; do
+    # link all files unhidden files
+    if [[ -f "$f" ]]; then
+        # echo "linking: $f $dest${f##*/}"
+        ln -s "$f" "$dest/${f##*/}"
+    fi
+done
+
+# only difference is dot prefixed to filename
+for f in "$returndir"/head-dotfiles/*; do
+    # link all files including hidden eg .lintrc
+    if [[ ! -f "$dest/.${f##*/}" ]]; then
+        echo "target file already exists: $dest/.${f##*/}"
+    fi
+
+    if [[ -f "$f" ]]; then
+        # echo "linking: $f $dest${f##*/}"
+        ln -s "$f" "$dest/.${f##*/}"
+    fi
 done
 
 cd "$returndir" || exit
-
-
-#todo check dest link not already there?
-#   if [[ -e "$dest" ]]; then 
-# account for all possibles to sync:
-#
-# src   dest
-# √     x       -link
-# √     √       -skip and give info already there
-# x     √       -up to user. ideally all syncd for source control. can also mean has been removed from sc.
-# 

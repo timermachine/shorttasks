@@ -6,17 +6,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "sti": "cd src/ && chmod +x install.sh && ./install.sh -i && cd ../..",
-    "str": "cd src/ chmod +x remove.sh && ./remove.sh -i && cd ../..",
-    "update": "cd src/ && ./remove.sh && ./install.sh ",
-    "shorttasks:install": "yarn sti",
-    "install:shorttasks": "yarn sti",
-    "remove:shorttasks": "yarn str",
-    "shorttasks:remove": "yarn str",
-    "bats-core": "git submodule add https://github.com/bats-core/bats-core.git tests/libs/bats-core",
-    "bats-file": "git submodule add  https://github.com/bats-core/bats-file.git tests/libs/bats-file",
-    "bats-assert": "git submodule add https://github.com/bats-core/bats-assert.git  tests/libs/bats-assert",
-    "dev:install": "yarn bats-file && yarn bats-assert",
-    "test": "bats tests/*"
+    "stinstall": "cd src/ && chmod +x install.sh && ./install.sh -i && cd ../..",
+    "stremove": "cd src/ && chmod +x remove.sh && ./remove.sh -i && cd ../..",
+    "update": "cd src/ && ./remove.sh && ./install.sh && cd ..",
+    "workspace-init": "chmod +x src/workspaceinit.sh && ./src/workspaceinit.sh"
   }
 }

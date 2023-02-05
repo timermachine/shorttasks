@@ -1,7 +1,7 @@
 #!/bin/bash
 # clear
 echo ''
-cat ./shorttasks/lib/ascii.txt
+cat ../shorttasks/lib/ascii.txt
 echo ''
 
 dest="$HOME/.shorttasks"
@@ -24,17 +24,17 @@ stinstall() {
   mkdir "$dest/lib"
 
   # ensure file exists and empty
-  alias_file='./shorttasks/aliases.sh'
+  alias_file='../shorttasks/aliases.sh'
   touch $alias_file
   echo '' >$alias_file
 
-  help_file='./shorttasks/lib/generatedhelp.txt'
+  help_file='../shorttasks/lib/generatedhelp.txt'
 
   touch $help_file
   echo '' >$help_file
 
   # update aliases.sh based on all scripts in src/shorttasks/
-  for f in ./shorttasks/*; do
+  for f in ../shorttasks/*; do
     if [[ -f "$f" ]]; then
       a=${f/.\/shorttasks\//''}
       b=${a/'.sh'/''}
@@ -43,7 +43,7 @@ stinstall() {
       # exclude alaises its self as in shorttasks folder.
       if [ $b != 'aliases' ] && [[ $b != *dr ]]; then
         # todo - nice to have: check if a dr file made, indicate (dr)
-        # if [ -f "./shorttasks/$f dr" ]
+        # if [ -f "../shorttasks/$f dr" ]
         echo $line >>$alias_file
         # if dr version file: (dr)
 
@@ -58,7 +58,7 @@ stinstall() {
   done
 
   # copy tasks/* to ~/.shorttasks/
-  for f in ./shorttasks/*; do
+  for f in ../shorttasks/*; do
     if [[ -f "$f" ]]; then
       # echo "$f $dest${f##*/}"
       cp "$f" "$dest/${f##*/}"
@@ -67,7 +67,7 @@ stinstall() {
   done
 
   # copy tasks/lib/* to ~/.shorttasks/
-  for f in ./shorttasks/lib/*; do
+  for f in ../shorttasks/lib/*; do
     if [[ -e "$f" ]]; then
       # echo "$f $dest${f##*/}"
       cp "$f" "$dest/lib/${f##*/}"
