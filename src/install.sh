@@ -1,7 +1,7 @@
 #!/bin/bash
 # clear
 echo ''
-cat ../shorttasks/lib/ascii.txt
+cat $PWD/shorttasks/lib/ascii.txt
 echo ''
 
 dest="$HOME/.shorttasks"
@@ -9,41 +9,98 @@ alias_source="source $dest/aliases.sh "
 
 # cp "./tasks/lib/*" "$dest/lib"
 # echo "mkdir $dest"
-echo ''
-echo 'Welcome to the ShortTasks installation.'
-echo "Installs to $HOME/.shorttasks."
-echo ''
-echo "You should look at the code to check its safe."
-echo 'Easy minute to check -only 400 simple lines. put it in all in one file:'
-echo '$ find src/ -name '*.sh' -exec cat {} \; > allcode.sh'
-echo ''
+
+preflight() {
+  # works but todo:
+  # need to remove and src $HOME profile first!
+  # need to know what profile using ~/.zshrc ~/.zshenv / ~/.bashrc  ~/.bash_profile etc / other
+
+  if [ ! -d "$PWD/shorttasks" ] || [ ! -d "$PWD/shorttasks/lib" ]; then
+    echo "Preflight check not passed."
+    echo 'install must be run from shorttasks/ folder. '
+    echo 'ie: from shorttasks run:  ./src/install.sh'
+    echo 'The reason being: install needs to locate your local files so they can be kept under source control'
+    exit
+  fi
+
+  if [ -d "$HOME/.shorttasks" ]; then
+    echo "Preflight check not passed."
+    echo "target: $HOME/.shorttasks already exists."
+    echo "to prevent unintentional overwrite, remove it first."
+    echo "you can run shorttasks/src/remove.sh"
+    echo "or yarn update - which removes target and then re-installs"
+    exit
+  fi
+
+  # if [ -n "$ZSH_VERSION" ]; then
+  #   # assume Zsh
+  #   source "$HOME/.zshrc"
+  # elif [ -n "$BASH_VERSION" ]; then
+  #   # assume Bash
+  #   source "$HOME/.bashrc"
+  #   # else
+  #   # assume something else
+  # fi
+
+  # check not overriding existing commands.
+  # note: above checks take care of preinstalled shorttasks.
+  # only concerend about binary commands.
+  for f in ./shorttasks/*; do
+
+    if [[ -f "$f" ]]; then
+      sanspath="${f##*/}"       # trim path before cmd name
+      rawf=${sanspath/'.sh'/''} #trim off .sh
+      isacommand=$(type "$rawf") </dev/tty
+
+      if [[ "$isacommand" =~ "bin" ]]; then
+        clear
+        echo "Preflight check not passed."
+        echo "$isacommand. existing command so wont proceed."
+        echo "overriding existing commands not permitted - for your own good!"
+        exit
+      fi
+    fi
+  done
+  clear
+
+}
 
 stinstall() {
-  # echo 'prepare...'
+  # echo 'prepare$PWD.'
+  echo 'Preflight checks passed'
+  echo ''
+  echo 'Welcome to the ShortTasks installation.'
+  echo "Installs to $HOME/.shorttasks."
+  echo ''
+  # echo "You should look at the code to check its safe."
+  # echo 'Easy minute to check -only 400 simple lines. put it in all in one file:'
+  # echo '$ find shorttasks/ -name '*.sh' -exec cat {} \; > allcode.sh'
+  # echo '$ find shorttasks/lib -name '*.sh' -exec cat {} \; >> allcode.sh'
+  echo ''
   mkdir "$dest"
   mkdir "$dest/lib"
 
   # ensure file exists and empty
-  alias_file='../shorttasks/aliases.sh'
-  touch $alias_file
-  echo '' >$alias_file
+  alias_file="$PWD/shorttasks/aliases.sh"
+  touch "$alias_file"
+  echo '#!/bin/bash' >"$alias_file"
 
-  help_file='../shorttasks/lib/generatedhelp.txt'
+  help_file="$PWD/shorttasks/lib/generatedhelp.txt"
 
   touch $help_file
-  echo '' >$help_file
+  echo "" >$help_file
 
   # update aliases.sh based on all scripts in src/shorttasks/
-  for f in ../shorttasks/*; do
+  for f in ./shorttasks/*; do
     if [[ -f "$f" ]]; then
-      a=${f/.\/shorttasks\//''}
-      b=${a/'.sh'/''}
+      a=${f/.\/shorttasks\//''} # trim path before cmd name
+      b=${a/'.sh'/''}           #trim off .sh
 
       line="alias $b"'=$HOME/.shorttasks/'"$a"
       # exclude alaises its self as in shorttasks folder.
       if [ $b != 'aliases' ] && [[ $b != *dr ]]; then
         # todo - nice to have: check if a dr file made, indicate (dr)
-        # if [ -f "../shorttasks/$f dr" ]
+        # if [ -f "$PWD/shorttasks/$f dr" ]
         echo $line >>$alias_file
         # if dr version file: (dr)
 
@@ -58,7 +115,7 @@ stinstall() {
   done
 
   # copy tasks/* to ~/.shorttasks/
-  for f in ../shorttasks/*; do
+  for f in "$PWD"/shorttasks/*; do
     if [[ -f "$f" ]]; then
       # echo "$f $dest${f##*/}"
       cp "$f" "$dest/${f##*/}"
@@ -67,7 +124,7 @@ stinstall() {
   done
 
   # copy tasks/lib/* to ~/.shorttasks/
-  for f in ../shorttasks/lib/*; do
+  for f in "$PWD"/shorttasks/lib/*; do
     if [[ -e "$f" ]]; then
       # echo "$f $dest${f##*/}"
       cp "$f" "$dest/lib/${f##*/}"
@@ -105,11 +162,13 @@ if [ "$1" = '-i' ]; then
   n | N) echo 'quitting' && exit ;;
   y | Y)
     clear
+    preflight
     stinstall
     exit
     ;;
   *) echo 'Response not valid' ;;
   esac
 else
+  preflight
   stinstall
 fi

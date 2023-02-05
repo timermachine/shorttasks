@@ -1,4 +1,4 @@
-
+#!/bin/bash
 alias g=$HOME/.shorttasks/g.sh
 alias ga=$HOME/.shorttasks/ga.sh
 alias gb=$HOME/.shorttasks/gb.sh
@@ -18,8 +18,6 @@ alias push=$HOME/.shorttasks/push.sh
 alias pushnew=$HOME/.shorttasks/pushnew.sh
 alias stgen=$HOME/.shorttasks/stgen.sh
 alias sth=$HOME/.shorttasks/sth.sh
-alias stws-init=$HOME/.shorttasks/stws-init.sh
 alias stws=$HOME/.shorttasks/stws.sh
 alias stwsx=$HOME/.shorttasks/stwsx.sh
 alias y=$HOME/.shorttasks/y.sh
-alias zu=$HOME/.shorttasks/zu.sh

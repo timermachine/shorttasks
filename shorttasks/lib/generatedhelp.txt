@@ -16,10 +16,8 @@
      pull        :      "git pull" 
      push        :      "git push" 
      pushnew     :      "git push --set-upstream origin " 
-     stgen       :      " Wizzard to generate your own custom st commands." echo "cmd 
+     stgen       :      "Wizzard to generate your own custom st commands." echo "cmd 
      sth         :      "(this) command help for all active st commands. " 
-     stws-init   :      "stws-init Initialise st polyrepo head folder." 
      stws        :      "Sets active workspace as filter for all commands." 
      stwsx       :      "Unsets active workspace filter for all commands." 
      y           :      "yarn" 
-     zu          :      'git status -s -b' 

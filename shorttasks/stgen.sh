@@ -14,7 +14,7 @@
 #  feel need a .strc or ~.shorttasks pointer to st forked repo.
 #  otherwise thinking about searching for it - but that seems wrong.
 #  maybe offer a hint if not found.
-shorttaskdir="$PWD/shorttasks/src/shorttasks"
+shorttaskdir="$PWD/shorttasks/shorttasks"
 
 # cmd for documentation only
 cmd="Wizzard to generate your own custom st commands."
