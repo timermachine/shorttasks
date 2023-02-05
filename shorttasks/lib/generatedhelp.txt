@@ -6,6 +6,7 @@
      gca         :      "git commit -a --amend --no-edit" 
      gco         :      "git checkout " 
      gcob        :      "git checkout -b " 
+     gm          :      'git merge' 
      gs          :      "git status -s -b" 
      h           :      "gh " 
      l           :      "ls -1 --color" 
