@@ -9,6 +9,10 @@ returndir=$PWD
 dest='../'
 # cd ..
 
+#  todo: if already have files in root eg package.json, .tscrc .gitignore etc -
+# offer to turn them into links ie - copy to head-files and linkback.
+# the use case is - already setup for yarn workspaces.
+
 preflight() {
     # prefilight checks
     okproceed=true
