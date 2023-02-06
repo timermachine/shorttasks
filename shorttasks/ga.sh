@@ -22,7 +22,7 @@ if [ "$1" = '-h' ]; then
     exit
 fi
 action "$@"
-# $HOME/.shorttasks/gs.sh "@"
+$HOME/.shorttasks/gs.sh "@"
 
 #  p1substitite() {
 #     [ "$1" != '.' ] && return
