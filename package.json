@@ -6,10 +6,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "stinstall": "chmod +x src/install.sh && ./src/install.sh -i ",
-    "stremove": "chmod +x src/remove.sh && ./src/remove.sh -i ",
+    "setup": "chmod +x src/install.sh && ./src/install.sh -i ",
+    "remove": "chmod +x src/remove.sh && ./src/remove.sh -i ",
     "update": "./src/remove.sh && ./src/install.sh ",
-    "workspace-init": "chmod +x src/workspaceinit.sh && ./src/workspaceinit.sh",
-    "inf": "$HOME/.shorttasks/l.sh ."
+    "generate": "chmod +x src/generate.sh && ./src/generate.sh",
+    "wsinit": "chmod +x src/workspaceinit.sh && ./src/workspaceinit.sh"
   }
 }

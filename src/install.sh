@@ -50,23 +50,23 @@ preflight() {
     if [[ -f "$f" ]]; then
       sanspath="${f##*/}"       # trim path before cmd name
       rawf=${sanspath/'.sh'/''} #trim off .sh
-      isacommand=$(type "$rawf") </dev/tty
 
-      if [[ "$isacommand" =~ "bin" ]]; then
-        clear
+      if $rawf &>/dev/null; then
+
         echo "Preflight check not passed."
-        echo "$isacommand. existing command so wont proceed."
-        echo "overriding existing commands not permitted - for your own good!"
+        echo "$rawf is an existing command so wont proceed."
+        echo "overriding existing commands not permitted - for your own system safety."
+        echo "rename shortasks/$rawf.sh and its cmd=$rawf and try again."
         exit
       fi
     fi
   done
-  clear
 
 }
 
 stinstall() {
   # echo 'prepare$PWD.'
+  #  clear
   echo 'Preflight checks passed'
   echo ''
   echo 'Welcome to the ShortTasks installation.'

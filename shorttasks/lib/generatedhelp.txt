@@ -1,6 +1,6 @@
 
      g           :      "git" 
-     ga          :      "git add ." 
+     ga          :      "git add -v ." 
      gb          :      "git branch " 
      gc          :      "git commit -m " 
      gca         :      "git commit -a --amend --no-edit" 
@@ -9,6 +9,9 @@
      gm          :      'git merge' 
      gs          :      "git status -s -b" 
      h           :      "gh " 
+     hrcl        :      'gh repo clone' 
+     hrcr        :      'gh repo create' 
+     hrl         :      'gh repo list -L 100' 
      l           :      "ls -1 --color" 
      n           :      "npm " 
      nr          :      "npm run" 
@@ -17,8 +20,7 @@
      pull        :      "git pull" 
      push        :      "git push" 
      pushnew     :      "git push --set-upstream origin " 
-     stgen       :      "Wizzard to generate your own custom st commands." echo "cmd 
-     sth         :      "(this) command help for all active st commands. " 
+     sth         :      "(this) generated command help for all active st commands. " 
      stws        :      "Sets active workspace as filter for all commands." 
      stwsx       :      "Unsets active workspace filter for all commands." 
      y           :      "yarn" 

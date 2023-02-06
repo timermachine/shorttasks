@@ -14,7 +14,7 @@
 #  feel need a .strc or ~.shorttasks pointer to st forked repo.
 #  otherwise thinking about searching for it - but that seems wrong.
 #  maybe offer a hint if not found.
-shorttaskdir="$PWD/shorttasks/shorttasks"
+shorttaskdir="$PWD/shorttasks"
 
 # cmd for documentation only
 cmd="Wizzard to generate your own custom st commands."
@@ -78,12 +78,21 @@ echo 'fi' >>"$script_file"
 #     exit
 # fi
 
-echo 'action "$@"' >>"$script_file"
-
+echo 'Does this command enquire/operate on existing folders/files? (y/n)'
+read multi_capable
+if [ $multi_capable = 'y' ] || [ $multi_capable = 'Y' ]; then
+    # enquiring: gs, gb, l
+    # enquring: push (but not obviously)
+    # operational: ga, gco
+    echo 'action "$@"' >>"$script_file"
+else
+    # eg creational: hcl, gcl
+    # eg non fs operational: hrl
+    echo 'singleaction "$@"' >>"$script_file"
+fi
 # add help template.
 
-echo "basic command $command_name generated to file: $script_file"
-echo 'y shorttasks update to make availiable.'
-echo 'as a new command, restart terminal or source ~/.[profile])'
-echo 'done.'
+echo " $command_name generated to file: $script_file done."
+echo 'a. y shorttasks update to make availiable.'
+echo 'b. Since creating a new command, need to restart terminal ( or source ~/.[profile]) ).'
 echo ''

@@ -2,7 +2,7 @@
 source "$HOME/.shorttasks/lib/actions.sh"
 
 st="ga"
-cmd="git add ."
+cmd="git add -v ."
 applicable=".git"
 
 # might want a warning /dry run here.
@@ -22,6 +22,7 @@ if [ "$1" = '-h' ]; then
     exit
 fi
 action "$@"
+# $HOME/.shorttasks/gs.sh "@"
 
 #  p1substitite() {
 #     [ "$1" != '.' ] && return
